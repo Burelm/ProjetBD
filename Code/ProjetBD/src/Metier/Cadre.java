@@ -1,4 +1,4 @@
-
+package Metier;
 public class Cadre extends Impression {
 	private String taille;
 	private String model;
