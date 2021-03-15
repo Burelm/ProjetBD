@@ -14,7 +14,7 @@ public class FichierImage {
 	public int getIdImage() {
 		return idImage;
 	}
-	public FichierImageDAO(int idImage, String chemin_acces, String priseDeVue, String paramRetouche, String resolution,
+	public FichierImage(int idImage, String chemin_acces, String priseDeVue, String paramRetouche, String resolution,
 			boolean partage, Date dateDerniereUtilisation) {
 		this.idImage = idImage;
 		this.chemin_acces = chemin_acces;
