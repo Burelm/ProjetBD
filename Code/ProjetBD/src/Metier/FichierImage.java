@@ -2,7 +2,7 @@ package Metier;
 
 import java.sql.Date;
 
-public class FichierImageDAO {
+public class FichierImage {
 	private int idImage;
 	private String chemin_acces;
 	private String priseDeVue;
