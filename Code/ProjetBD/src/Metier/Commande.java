@@ -10,7 +10,7 @@ public class Commande {
 	private String Statut = ""; //Statut de la commande
 	private int idAdresse=0; //identifiant adresse
 	
-	private Set<Adresse> listAdresse = new HashSet<Adresse>(); //Liste des adresses
+	private Set<Produit> listProduit = new HashSet<Produit>(); //Liste des produit commandé
 
 	public Commande(int idCommande, String noClient,String date,String livraison,Boolean CodePromo,String Statut,int idAdresse) {
 		this.idCommande=idCommande;	
