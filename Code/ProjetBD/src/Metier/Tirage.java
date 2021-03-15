@@ -1,3 +1,4 @@
+package Metier;
 
 public class Tirage {
 	private int idCommande;
