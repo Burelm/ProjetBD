@@ -1,7 +1,6 @@
 package Metier;
 
-import java.util.HashSet;
-import java.util.Set;
+
 public class Commande {
 	private int idCommande= 0;
 	private int noClient = 0; //ID
@@ -11,7 +10,7 @@ public class Commande {
 	private String Statut = ""; //Statut de la commande
 	private int idAdresse=0; //identifiant adresse
 	private float prix=0;
-	private Set<Produit> listProduit = new HashSet<Produit>(); //Liste des produit commandé
+	private Panier panier = new Panier(); //Liste des produit commandé
 
 	public Commande(int idCommande, int noClient,String date,String livraison,Boolean CodePromo,String Statut,int idAdresse) {
 		this.idCommande=idCommande;	
@@ -67,6 +66,14 @@ public class Commande {
 		this.CodePromo=CodePromo;
 	}
 	
+	public int getIdAdresse() {
+		return idAdresse;
+	}
+
+	public void setIdAdresse(int idAdresse) {
+		this.idAdresse = idAdresse;
+	}
+
 	public String getStatut() { 
 		return Statut; 
 	}
@@ -75,17 +82,25 @@ public class Commande {
 		this.Statut=Statut;
 	}
 	public void setPrix(){
-		for(Produit i:listProduit){
-			this.prix+=i.getPrix();
+		for(int i=0;i<panier.length();i++){
+			this.prix+=panier.getlistProduit().get(i).getPrix();
 		}
 	}
+	public float getPrix(){
+		return this.prix;
+	}
+	
 	public void setListProduit(){
 		//A voir ce qu'on met dedans
 	}
 	///-------
-	
+	public Panier getPanier(){
+		return this.panier;
+	}
 
 	public void setCodePromo(int idAdresse) {
 		this.idAdresse=idAdresse;
 	}
 	
+	
+}
