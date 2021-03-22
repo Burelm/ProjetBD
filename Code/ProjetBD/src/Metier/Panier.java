@@ -1,21 +1,32 @@
-public class Panier {
+package Metier;
 
-    private int idProduit; //ID
+import java.util.ArrayList;
+
+
+public class Panier {
+	
+	private ArrayList<Produit> listProduit = new ArrayList<Produit>(); //Liste des produit commandé
     private int idCommande; //Commande
 
-    public Panier(int idProduit, int idCommande) {
-        this.idProduit = idProduit;
+    public Panier(int idCommande,ArrayList<Produit> listProduit) {
         this.idCommande = idCommande;
+        this.listProduit = listProduit;
+    }
+    
+
+    public ArrayList<Produit> getlistProduit(){
+        return listProduit;
     }
 
-    public int getIDProduit(){
-        return idProduit;
+    public void setlistProduit(ArrayList<Produit> listProduit){
+        this.listProduit = listProduit;
     }
-
-    public void setIDProduit(int idProduit){
-        this.idProduit = idProduit;
+    public void addTolistProduit(Produit produit){
+        listProduit.add(produit);
     }
-
+    public void delTolistProduit(Produit produit){
+        listProduit.remove(produit);
+    }
     public int getIDCommande(){
         return idCommande;
     }
