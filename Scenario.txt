@@ -1,0 +1,183 @@
+Contexte: nous sommes le 1 janvier 1999 (si non précision date)
+Jean-Jacque Dupont nouvel utilisateur de PhotoNum
+Micheline Dubourg veteran de PhotoNum
+
+1:
+
+Jean-Jacque Dupont veut cree son compte:
+	mail:JJ@test.ts
+	Nom:Dupont
+	Prénom:Jean-Jacque
+	MDP:1234
+
+Micheline Dubourg veut se connectée mais fait une faute ->
+
+IN DB:
+	mail:MD@test.ts
+	Nom:Dubourg
+	Prénom:Micheline
+	MDP:5678
+	
+INPUT:
+	mail:MDD@test.ts
+	MDP:5678
+
+INPUT:
+	mail:MD@test.ts
+	MDP:5679
+	
+Elle finie par saisir les bon id->
+
+INPUT:
+	mail:MD@test.ts
+	MDP:5678
+
+2:	
+
+Jean-Jacque upload des photos depuis son dossier image sur son ordinateur GNU/Linux/Unix 
+	path: /user/jj/image/photo1.png
+	date d'upload:01/01/99
+	il ne partage pas photo1.png
+	path: /user/jj/image/photo2.png
+	date d'upload:01/01/99
+	il partage photo2.png
+
+Micheline-Dubourg à diffèrentes photos d'upload depuis son ordinateur GNU/Linux/Unix:
+	path: /user/md/image/photo1.png
+	date d'upload:21/12/98
+	elle ne partage pas photo1.png
+	path: /user/md/image/photo2.png
+	date d'upload:22/12/98
+	elle partage photo2.png
+	path: /user/md/image/photo3.png
+	date d'upload:30/12/98
+	elle partage photo3.png
+	path: /user/md/image/photo4.png
+	date d'upload:01/01/99
+	elle partage pas photo4.png
+	
+Micheline-Dubourg se connecte le 01/01/99 et le 02/01/99 elle constate les changements dans ses fichiers uploads comme attendus:
+le 01/01/99
+
+	path: /user/md/image/photo2.png
+	date d'upload:22/12/98
+	elle partage photo2.png
+	path: /user/md/image/photo3.png
+	date d'upload:30/12/98
+	elle partage photo3.png
+	path: /user/md/image/photo4.png
+	date d'upload:01/01/99
+	elle partage pas photo4.png
+	
+le 02/01/99
+
+	path: /user/md/image/photo3.png
+	date d'upload:30/12/98
+	elle partage photo3.png
+	path: /user/md/image/photo4.png
+	date d'upload:01/01/99
+	elle partage pas photo4.png
+	
+elle réutilise photo3.png le 05/01/99 
+
+	path: /user/md/image/photo3.png
+	date d'upload:05/01/99
+	elle partage photo3.png
+	path: /user/md/image/photo4.png
+	date d'upload:01/01/99
+	elle partage pas photo4.png
+	
+3:
+Depuis le catalogue Jean-Jacque à décider de constituer un tirage de la photo1.png le 08/01/99
+Depuis le catalogue Jean-Jacque à décider de constituer un agenda avec la photo1.png le 08/01/99
+Depuis le catalogue Micheline-Dubourg à décider de constituer un album avec photo1.png,photo2.png,photo3.png le 08/01/99 (elle a la mémoire un peu courte)
+Depuis le catalogue Micheline-Dubourg à décider de constituer un album avec photo4.png et photo3.png (dans l'ordre énoncer)
+Depuis le catalogue Jean-Jacque décider de commander un agenda mais à agenda mais à oublié de mettre une image avant
+
+4:
+Jean-Jacque veut changer le tirage de photo1.png le 08/01/99 en tirage de photo2.png
+Jean-Jacque veut changer le tirage de photo1.png le 08/01/99 en agenda de photo1.png
+Micheline-Dubourg veut changer album avec photo4.png et photo3.png (dans l'ordre énoncer) en album avec photo3.png
+Micheline-Dubourg veut changer album avec photo4.png et photo3.png (dans l'ordre énoncer) en album sans photo
+
+5:
+Nous sommes le 10/01/99 
+
+Jean-Jacque c'est familiarisé avec la platforme et à donc à présent diffèrentes photo dans son compte 
+	
+	
+	path: /user/jj/image/photo1.png
+	date d'upload:08/01/99
+	il ne partage pas photo1.png
+	
+	path: /user/jj/image/photo2.png
+	date d'upload:08/01/99
+	il partage photo2.png
+	
+	path: /user/jj/image/photo3.png
+	date d'upload:09/01/99
+	il ne partage pas photo3.png
+	
+	path: /user/jj/image/photo4.png
+	date d'upload:03/01/99
+	il partage photo4.png
+	
+	path: /user/jj/image/photo5.png
+	date d'upload:06/01/99
+	il partage photo5.png
+
+Il décide de supprimer la photo3.png, photo5.png, la photo5.png est utilisée par Micheline-Dubourg 
+et donc est en cours de modification, la supression est mise en attente et la sessetion du partage aussi, Micheline-Dubourg en est avertie par mail.
+La photo3.png est supprimer avec succès la réfèrence vers ce fichier est NULL.
+Il décide de désactivé le partage de la photo2.png et photo4.png, la photo4.png est utilisée par Micheline-Dubourg
+et donc la photos est en cours de modification, la sessetion du partage est en cours, Micheline-Dubourg en est avertie par mail.
+La photo2.png n'est plus partagé.
+
+	
+si pas partage d'image pas possible de prendre la photo de qlq d'autre 
+
+6:
+
+Jean-Jacque consulte ces photos partager voilà ce qu'il voit:
+
+NONE
+
+il regarde ça liste des élèments de sa commande via l'id de commande qui lui est associé:
+	-tirage de photo2.png
+	-agenda avec photo1.png
+	
+il regarde les promos qu'il a:
+
+NONE
+
+il consulte ces impressions:
+	-agenda avec photo1.png 
+		détails: 1999-2000
+		
+
+Micheline-Dubourg consulte ces photos partager voilà ce qu'elle voit:
+
+	path: /user/md/image/photo3.png
+	date d'upload:05/01/99
+	elle partage photo3.png
+
+elle regarde ça liste des élèments de sa commande via l'id de commande qui lui est associé:
+	- album avec photo3.png
+	
+elle regarde les promos qu'elle a:
+	- ABUGLUKPLANK2000 
+	
+elle consulte ces impressions:
+	-album avec photo3.png
+		détails: {photo3.png}
+		
+		
+7:
+
+Jean-Jacque avant de voir ça liste de commande à due commander ces produits, une fois fais il a du commander
+	il n'as pas de promo et paye 100% du prix. Une fois fait la commande est ajouter à la liste de commande et à un ID
+
+Micheline-Dubourg avant de voir ça liste de commande à due commander ces produits, une fois fais il a du commander
+	elle a une promo qu'elle utilise et paye 95% du prix. Une fois fait la commande est ajouter à la liste de commande et à un ID
+	Si elle avait choisie de ne pas l'utiliser elle aurait payer 100% du prix.
+	Sa promo est supprimer de la liste des promos.
