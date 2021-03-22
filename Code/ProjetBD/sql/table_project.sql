@@ -1,21 +1,22 @@
+Drop Table Impression;
+Drop Table Cadre;
+Drop Table Calendrier;
+Drop Table Album;
 Drop Table Tirage;
 Drop Table Produit;
-Drop Table CodePanier;
+Drop Table CodePromo;
 Drop Table Panier;
 Drop Table LesCommandes;
-Drop Table LesAdresseClients;
 Drop Table FichierImage;
+Drop Table LesAdresseClients;
 Drop Table LesClients;
-Drop Table Album;
-Drop Table Calendrier;
-Drop Table Cadre;
-Drop Table Impression;
+
 
 CREATE TABLE LesClients(
    	noClient NUMBER(7) PRIMARY KEY,
    	addr_mail VARCHAR(50) ,
-   	nom VARCHAR(13),
-    prenom VARCHAR(13),
+   	nom VARCHAR(50),
+    prenom VARCHAR(50),
     mdp VARCHAR(16),
     etatCompte NUMBER(1) --
 );
