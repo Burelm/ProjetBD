@@ -9,7 +9,7 @@ public class Commande {
 	private Boolean CodePromo = false; //CodePromo
 	private String Statut = ""; //Statut de la commande
 	private int idAdresse=0; //identifiant adresse
-	
+	private float prix=0;
 	private Set<Produit> listProduit = new HashSet<Produit>(); //Liste des produit commandé
 
 	public Commande(int idCommande, String noClient,String date,String livraison,Boolean CodePromo,String Statut,int idAdresse) {
@@ -20,6 +20,9 @@ public class Commande {
 		this.CodePromo=CodePromo;
 		this.Statut=Statut;
 		this.idAdresse=idAdresse;
+		setListProduit();
+		setPrix();
+		
 	}
 
 	public Commande(){
@@ -69,6 +72,14 @@ public class Commande {
 
 	public void setStatut(String Statut) {
 		this.Statut=CodePromo:
+	}
+	public void setPrix(){
+		for(i=0;i<listProduit.length;i++){
+			this.prix+=listProduit[i].getPrix();
+		}
+	}
+	public void setListProduit(){
+		//A voir ce qu'on met dedans
 	}
 	///-------
 	public String getCodePromo() { 
