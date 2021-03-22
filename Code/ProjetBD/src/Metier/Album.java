@@ -1,12 +1,11 @@
 public class Album{
 	
-	private int refTirage = -1;
 	private String titre ="";
 	private String miseEnPage ="";
 	private String descriptif =""; 
 	
-	public Album(int refTirage,String titre,String miseEnPage,String descriptif){
-		this.refTirage=refTirage;
+	public Album(String titre,String miseEnPage,String descriptif,int idCommande,int idProduit,int refTirage,int idImage,String format,int ordre){
+		super(idCommande, idProduit, refTirage, idImage, format, ordre);
 		this.titre=titre;
 		this.miseEnPage=miseEnPage;
 		this.descriptif=descriptif;
