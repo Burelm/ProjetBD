@@ -80,7 +80,7 @@ CREATE TABLE Tirage(
     idCommande NUMBER(7),
     RefTirage NUMBER(7) PRIMARY KEY,
     idImage NUMBER(7),
-    format VARCHAR(100),
+    formatImg VARCHAR(100),
     FOREIGN KEY (idCommande) REFERENCES LesCommandes(idCommande),
     FOREIGN KEY (idProduit) REFERENCES Produit(idProduit),
     FOREIGN KEY (idImage) REFERENCES Produit(idProduit)
