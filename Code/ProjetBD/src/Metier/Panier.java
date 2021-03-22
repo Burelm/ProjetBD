@@ -13,8 +13,6 @@ public class Panier {
         this.listProduit = listProduit;
     }
     public Panier() {
-
-        this.listProduit = listProduit;
     }
 
     public ArrayList<Produit> getlistProduit(){
