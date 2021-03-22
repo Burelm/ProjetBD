@@ -5,6 +5,12 @@ public class AdresseClient {
 	String numeroRue;
 	String ville;
 	String code_postal;
+	public AdresseClient(String nomRue, String numeroRue, String ville, String code_postal) {
+		this.nomRue = nomRue;
+		this.numeroRue = numeroRue;
+		this.ville = ville;
+		this.code_postal = code_postal;
+	}
 	public String getNomRue() {
 		return nomRue;
 	}
