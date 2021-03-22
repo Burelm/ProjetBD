@@ -67,7 +67,7 @@ CREATE TABLE CodePromo(
     FOREIGN KEY (noClient) REFERENCES LesClients(noClient)
 );
 
-CREATE TABLE Produit(
+CREATE TABLE Produit( -- creer une liste de produit prédéfinie dans la documentation
     idProduit NUMBER(7) PRIMARY KEY,
     typeImpr VARCHAR(20) NOT NULL CHECK (typeImpr IN('Tirage','Impression','Cadre','Calendrier','Album')),-- A gerer comme si c'était une énumeration
     Qualite VARCHAR(20) NOT NULL CHECK (Qualite IN('Bonne','Moyenne','Haute')),-- A gerer comme si c'était une énumeration
@@ -80,7 +80,7 @@ CREATE TABLE Tirage(
     idCommande NUMBER(7),
     RefTirage NUMBER(7) PRIMARY KEY,
     idImage NUMBER(7),
-    formatImg VARCHAR(100),
+    formatImg VARCHAR(100), --format prédéfinie ?
     FOREIGN KEY (idCommande) REFERENCES LesCommandes(idCommande),
     FOREIGN KEY (idProduit) REFERENCES Produit(idProduit),
     FOREIGN KEY (idImage) REFERENCES Produit(idProduit)
@@ -95,20 +95,20 @@ CREATE TABLE Impression(
 CREATE TABLE Cadre(
   RefTirage NUMBER(7),
   Taille VARCHAR(100),
-  Model VARCHAR(100),
+  Model VARCHAR(100), -- Ajout d'énumeration de modele
   FOREIGN KEY (RefTirage) REFERENCES Tirage(RefTirage)
 );
 
 CREATE TABLE Calendrier(
   RefTirage NUMBER(7),
-  miseEnPage VARCHAR(100),
+  miseEnPage VARCHAR(100), -- Imposition de mise en page?
   FOREIGN KEY (RefTirage) REFERENCES Tirage(RefTirage)
 );
 
 CREATE TABLE Album(
   RefTirage NUMBER(7),
   Titre VARCHAR(100),
-  miseEnPage VARCHAR(100),
+  miseEnPage VARCHAR(100), -- Imposition de mise en page?
   Descriptif VARCHAR(100),
   FOREIGN KEY (RefTirage) REFERENCES Tirage(RefTirage)
 );
