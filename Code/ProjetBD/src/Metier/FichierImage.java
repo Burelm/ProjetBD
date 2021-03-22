@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class FichierImage {
 	private int idImage;
+	private int noClient;
 	private String chemin_acces;
 	private String priseDeVue;
 	private String paramRetouche;
@@ -11,12 +12,10 @@ public class FichierImage {
 	private boolean partage;
 	private Date dateDerniereUtilisation;
 	
-	public int getIdImage() {
-		return idImage;
-	}
-	public FichierImage(int idImage, String chemin_acces, String priseDeVue, String paramRetouche, String resolution,
+	public FichierImage(int idImage, int noClient, String chemin_acces, String priseDeVue, String paramRetouche, String resolution,
 			boolean partage, Date dateDerniereUtilisation) {
 		this.idImage = idImage;
+		this.noClient = noClient;
 		this.chemin_acces = chemin_acces;
 		this.priseDeVue = priseDeVue;
 		this.paramRetouche = paramRetouche;
@@ -24,8 +23,17 @@ public class FichierImage {
 		this.partage = partage;
 		this.dateDerniereUtilisation = dateDerniereUtilisation;
 	}
+	public int getIdImage() {
+		return idImage;
+	}
 	public void setIdImage(int idImage) {
 		this.idImage = idImage;
+	}
+	public int getNoClient() {
+		return noClient;
+	}
+	public void setNoClient(noClient) {
+		this.noClient = noClient;
 	}
 	public String getChemin_acces() {
 		return chemin_acces;
