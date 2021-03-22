@@ -9,21 +9,21 @@ public class ProduitDAO extends DAO<Produit>{
     }
     
     public boolean create(Produit obj) {
-		try {
-			this.connect.createStatement().executeQuery(
-			"INSERT INTO Produit"
-			+ "VALUES("
-			+ obj.getID()+","+obj.getTypeImpr()+","+getTypeQualite()+","+getPrix()+","+obj.getDescription()+")");
-			return true;
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
+	try {
+		this.connect.createStatement().executeQuery(
+		"INSERT INTO Produit"
+		+ "VALUES("
+		+ obj.getID()+","+obj.getTypeImpr()+","+getTypeQualite()+","+getPrix()+","+obj.getDescription()+")");
+		return true;
 	}
+	catch (SQLException e) {
+		e.printStackTrace();
+		return false;
+	}
+    }
     
     public Produit read(int idProduit) {
-        Produit produit = new Produit();      
+    	Produit produit = new Produit();      
         try {
             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM Produit WHERE idProduit ="+idProduit);
             if(result.next()) 
