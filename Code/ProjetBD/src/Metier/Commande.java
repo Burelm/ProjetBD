@@ -1,4 +1,5 @@
-Class Commande
+package Metier;
+
 import java.util.HashSet;
 import java.util.Set;
 public class Commande {
@@ -12,7 +13,7 @@ public class Commande {
 	private float prix=0;
 	private Set<Produit> listProduit = new HashSet<Produit>(); //Liste des produit commandé
 
-	public Commande(int idCommande, String noClient,String date,String livraison,Boolean CodePromo,String Statut,int idAdresse) {
+	public Commande(int idCommande, int noClient,String date,String livraison,Boolean CodePromo,String Statut,int idAdresse) {
 		this.idCommande=idCommande;	
 		this.noClient = noClient;
 		this.date = date;
@@ -35,10 +36,10 @@ public class Commande {
 		this.idCommande = idCommande; 
 	}
 	
-	public String getnoClient() { 
+	public int getnoClient() { 
 		return noClient; 
 	}
-	public void setnoClient(String noClient){ 
+	public void setnoClient(int noClient){ 
 		this.noClient = noClient;
 	}
 
@@ -58,12 +59,12 @@ public class Commande {
 		this.livraison = livraison;
 	}
 
-	public String getCodePromo() { 
+	public boolean getCodePromo() { 
 		return CodePromo; 
 	}
 
 	public void setCodePromo(Boolean CodePromo) {
-		this.CodePromo=CodePromo:
+		this.CodePromo=CodePromo;
 	}
 	
 	public String getStatut() { 
@@ -71,24 +72,20 @@ public class Commande {
 	}
 
 	public void setStatut(String Statut) {
-		this.Statut=CodePromo:
+		this.Statut=Statut;
 	}
 	public void setPrix(){
-		for(i=0;i<listProduit.length;i++){
-			this.prix+=listProduit[i].getPrix();
+		for(Produit i:listProduit){
+			this.prix+=i.getPrix();
 		}
 	}
 	public void setListProduit(){
 		//A voir ce qu'on met dedans
 	}
 	///-------
-	public String getCodePromo() { 
-		return CodePromo; 
-	}
+	
 
 	public void setCodePromo(int idAdresse) {
 		this.idAdresse=idAdresse;
 	}
 	
-	
-}
