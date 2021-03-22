@@ -28,7 +28,7 @@ public class FichierImageDAO extends DAO<FichierImage>{
         try {
             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM FichierImage WHERE idImage ="+idImage);
             if(result.next()) 
-                image = new Produit(idImage,result.getString("chemin_access"),result.getInt("noClient"),result.getString("Resolution"),result.getDate("dateDerniereUtilisation"),result.getString("paramRetouche"),result.getString("paramRetouche"),result.getString("PriseDeVue"),result.getBoolean("Partage"));
+                image = new FichierImage(idImage,result.getString("chemin_access"),result.getInt("noClient"),result.getString("Resolution"),result.getDate("dateDerniereUtilisation"),result.getString("paramRetouche"),result.getString("paramRetouche"),result.getString("PriseDeVue"),result.getBoolean("Partage"));
             } catch (SQLException e) { e.printStackTrace(); }
         return image;  
     }
