@@ -1,6 +1,5 @@
 package DAO;
-package ressource;
-import java.sql.*;
+import java.sql.Connection;
 
 public class ProduitDAO extends DAO<Produit>{
     
