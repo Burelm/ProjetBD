@@ -6,16 +6,11 @@ Drop Table LesCommandes;
 Drop Table LesAdresseClients;
 Drop Table FichierImage;
 Drop Table LesClients;
-Drop Table Album;
-Drop Table Calendrier;
-Drop Table Cadre;
-Drop Table Impression;
-Drop Table CodePromo;
 
 CREATE TABLE LesClients(
-   	noClient NUMBER(7) PRIMARY KEY,
-   	addr_mail VARCHAR(50) ,
-   	nom VARCHAR(13),
+    noClient NUMBER(7) PRIMARY KEY,
+    addr_mail VARCHAR(50) ,
+    nom VARCHAR(13),
     prenom VARCHAR(13),
     mdp VARCHAR(16),
     etatCompte NUMBER(1)
@@ -32,6 +27,17 @@ CREATE TABLE LesAdresseClients(
     FOREIGN KEY (noClient) REFERENCES LesClients(noClient)
 );
 
+
+CREATE TABLE FichierImage(
+    idImage NUMBER(7) PRIMARY KEY,
+    chemin_access VARCHAR(50),
+    noClient NUMBER(7),
+    PriseDeVue VARCHAR(50),
+    paramRetouche VARCHAR(50),
+    Resolution VARCHAR(50),
+    Partage NUMBER(1),
+    FOREIGN KEY (noClient) REFERENCES LesClients(noClient)
+);
 
 CREATE TABLE LesCommandes(
 	idCommande NUMBER(7) PRIMARY KEY,
