@@ -13,7 +13,7 @@ public class ProduitDAO extends DAO<Produit>{
 		this.connect.createStatement().executeQuery(
 		"INSERT INTO Produit"
 		+ "VALUES("
-		+ obj.getID()+","+obj.getTypeImpr()+","+getTypeQualite()+","+getPrix()+","+obj.getDescription()+")");
+		+ obj.getID()+","+obj.getTypeImpr()+","+obj.getTypeQualite()+","+obj.getPrix()+","+obj.getDescription()+")");
 		return true;
 	}
 	catch (SQLException e) {
