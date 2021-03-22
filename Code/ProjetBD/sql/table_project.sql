@@ -6,14 +6,18 @@ Drop Table LesCommandes;
 Drop Table LesAdresseClients;
 Drop Table FichierImage;
 Drop Table LesClients;
+Drop Table Album;
+Drop Table Calendrier;
+Drop Table Cadre;
+Drop Table Impression;
 
 CREATE TABLE LesClients(
-    noClient NUMBER(7) PRIMARY KEY,
-    addr_mail VARCHAR(50) ,
-    nom VARCHAR(13),
+   	noClient NUMBER(7) PRIMARY KEY,
+   	addr_mail VARCHAR(50) ,
+   	nom VARCHAR(13),
     prenom VARCHAR(13),
     mdp VARCHAR(16),
-    etatCompte NUMBER(1)
+    etatCompte NUMBER(1) --
 );
 
 CREATE TABLE LesAdresseClients(
@@ -22,11 +26,10 @@ CREATE TABLE LesAdresseClients(
     nomRue VARCHAR(13),
     noRue NUMBER(3),
     Ville VARCHAR(25),
-    Code_Postal NUMBER(5),
+    Code_Postal VARCHAR(5),
     PRIMARY KEY (idAdresse,noClient),
     FOREIGN KEY (noClient) REFERENCES LesClients(noClient)
 );
-
 
 CREATE TABLE FichierImage(
     idImage NUMBER(7) PRIMARY KEY,
@@ -36,6 +39,7 @@ CREATE TABLE FichierImage(
     paramRetouche VARCHAR(50),
     Resolution VARCHAR(50),
     Partage NUMBER(1),
+	DateUtilisation DATE,
     FOREIGN KEY (noClient) REFERENCES LesClients(noClient)
 );
 
@@ -70,6 +74,7 @@ CREATE TABLE Produit(
     Prix FLOAT(2),
     Description VARCHAR(100)
 );
+
 CREATE TABLE FichierImage (
     idImage NUMBER(7) PRIMARY KEY,
     chemin_access VARCHAR2(50),
@@ -91,6 +96,7 @@ CREATE TABLE Tirage(
     FOREIGN KEY (idProduit) REFERENCES Produit(idProduit),
     FOREIGN KEY (idImage) REFERENCES Produit(idProduit)
 );
+
 CREATE TABLE Impression(
       RefTirage NUMBER(7),
       Ordre INTEGER,
@@ -103,11 +109,13 @@ CREATE TABLE Cadre(
   Model VARCHAR(100),
   FOREIGN KEY (RefTirage) REFERENCES Tirage(RefTirage)
 );
+
 CREATE TABLE Calendrier(
   RefTirage NUMBER(7),
   miseEnPage VARCHAR(100),
   FOREIGN KEY (RefTirage) REFERENCES Tirage(RefTirage)
 );
+
 CREATE TABLE Album(
   RefTirage NUMBER(7),
   Titre VARCHAR(100),
