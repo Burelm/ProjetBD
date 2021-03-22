@@ -1,4 +1,5 @@
-public class Album{
+package Metier;
+public class Album extends Impression{
 	
 	private String titre ="";
 	private String miseEnPage ="";
