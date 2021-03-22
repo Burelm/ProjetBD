@@ -7,14 +7,14 @@ public class ProduitDAO extends DAO<Produit>{
         super(conn); 
     }
     
-    public Produit read(int id) {
+    public Produit read(int idProduit) {
         Produit produit = new Produit();      
         try {
-            ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM LesClients WHERE noClient ="+id);
+            ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM Produit WHERE idProduit ="+idProduit);
             if(result.next()) 
-                client = new Client(id,result.getString("addr_mail"),result.getString("nom"),result.getString("prenom"),result.getString("mdp"));
+                produit = new Produit(idProduit,result.getTypeI("typeImpr"),result.getTypeQ("Qualite"),result.getFloat("Prix"),result.getString("Description"));
             } catch (SQLException e) { e.printStackTrace(); }
-        return client;  
+        return produit;  
         }
     
 }
