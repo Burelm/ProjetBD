@@ -38,8 +38,8 @@ CREATE TABLE FichierImage(
     PriseDeVue VARCHAR(50),
     paramRetouche VARCHAR(50),
     Resolution VARCHAR(50),
-    Partage NUMBER(1),
-	DateUtilisation DATE,
+    Partage INTEGER NOT NULL CHECK (partage IN(0,1)),
+    DateUtilisation DATE,
     FOREIGN KEY (noClient) REFERENCES LesClients(noClient)
 );
 
@@ -73,17 +73,6 @@ CREATE TABLE Produit(
     Qualite VARCHAR(20) NOT NULL CHECK (Qualite IN('Bonne','Moyenne','Haute')),-- A gerer comme si c'était une énumeration
     Prix FLOAT(2),
     Description VARCHAR(100)
-);
-
-CREATE TABLE FichierImage (
-    idImage NUMBER(7) PRIMARY KEY,
-    chemin_access VARCHAR2(50),
-    noClient NUMBER(7),
-    PriseDeVue VARCHAR2(50),
-    paramRetouche VARCHAR2(50),
-    Resolution VARCHAR2(50),
-    Partage INTEGER NOT NULL CHECK (partage IN(0,1)),
-    FOREIGN KEY (noClient) REFERENCES LesClients(noClient)
 );
 
 CREATE TABLE Tirage(
