@@ -13,7 +13,7 @@ public class AlbumDAO extends DAO<Album>{
             this.connect.createStatement().executeQuery( 
             "INSERT INTO Album"
             + "VALUES("
-            + obj.getRefTirage()+","+obj.getTitre()+","+getMiseEnPage()+","+getDescriptif()+")");
+            + obj.getRefTirage()+","+obj.getTitre()+","+obj.getMiseEnPage()+","+obj.getDescriptif()+")");
             return true;
         }
 	      catch (SQLException e) {
@@ -23,13 +23,12 @@ public class AlbumDAO extends DAO<Album>{
     }
     
     public Album read(int refTirage) {
-    	  Album codepromo = new Album();      
+    	  Album album = new Album();      
         try {
-            ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM Album WHERE Album ="+refTirage);
+            ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM Album WHERE RefTirage ="+refTirage);
             if(result.next()) 
-                codepromo = new Album(refTirage,result.getString("Titre"),result.getString("mieseEnPage"),result.getString("Descriptif"));
+                album = new Album(refTirage,result.getString("Titre"),result.getString("mieseEnPage"),result.getString("Descriptif"));
             } catch (SQLException e) { e.printStackTrace(); }
-        return codepromo;  
+        return album;  
     }
-    
 }
