@@ -1,5 +1,8 @@
 package DAO;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import Metier.CodePromo;
 
 public class CodePromoDAO extends DAO<CodePromo>{
@@ -28,7 +31,8 @@ public class CodePromoDAO extends DAO<CodePromo>{
             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM CodePromo WHERE CodePromo ="+code);
             if(result.next()) 
                 codepromo = new CodePromo(code,result.getInt("noClient"));
-            } catch (SQLException e) { e.printStackTrace(); }
+            } 
+        catch (SQLException e) { e.printStackTrace(); }
         return codepromo;  
     }
     

@@ -16,7 +16,13 @@ public class Tirage {
 		this.idImage = idImage;
 		this.format = format;
 	}
-	
+	public Tirage() {
+		this.idCommande = -1;
+		this.idProduit = -1;
+		this.refTirage = -1;
+		this.idImage = -1;
+		this.format = "non";
+	}
 	public int getIdCommande() {
 		return idCommande;
 	}

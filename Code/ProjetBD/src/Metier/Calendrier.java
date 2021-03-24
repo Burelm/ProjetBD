@@ -7,6 +7,10 @@ public class Calendrier extends Impression {
         super(idCommande, idProduit, refTirage, idImage, format, ordre);
 		    setMiseEnPage(miseEnPage);
 	  }
+    public Calendrier() {
+        super();
+		    setMiseEnPage("non");
+	  }
 	  public String getMiseEnPage() {
 		    return miseEnPage;
 	  }

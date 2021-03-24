@@ -3,15 +3,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
 import Metier.Panier;
-import Metier.Produit;
-import Metier.Produit.TypeI;
-import Metier.Produit.TypeQ;
+
 
 public class panierDAO extends DAO<Panier> {
-	
+	ProduitDAO prod=new ProduitDAO(connect);
 	public panierDAO(Connection conn) { 
 		super(conn);
 	}
@@ -45,12 +41,12 @@ public class panierDAO extends DAO<Panier> {
 	}
 
 	
-	public static  Panier read(int idCommande) { //fait
+	public  Panier read(int idCommande) { //fait
 	    Panier lePanier = new Panier();
         try {
             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM Panier where PANIER.IdCommande="+idCommande);
             while (result.next()) {
-            	lePanier.addToListProduit(ProduitDAO.read(result.getInt("idProduit")));
+            	lePanier.addToListProduit(prod.read(result.getInt("idProduit")));
             	}
 
         } catch (SQLException e) { e.printStackTrace(); }
@@ -58,7 +54,7 @@ public class panierDAO extends DAO<Panier> {
     }
 	
 	
-	public  boolean update(Panier obj) { //à faire
+	/*public  boolean update(Panier obj) { //à faire
 		boolean res=delete(obj);
 		if(res) {
 		res=create(obj);
@@ -66,7 +62,7 @@ public class panierDAO extends DAO<Panier> {
 		}
 		return res;
 	}
-	
+	*/
 	
 	public  boolean delete(int idCommande) { //à faire
 		try {

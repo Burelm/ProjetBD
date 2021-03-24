@@ -1,5 +1,6 @@
 package DAO;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Metier.Tirage;
@@ -15,7 +16,7 @@ public class TirageDAO extends DAO<Tirage>{
             this.connect.createStatement().executeQuery( 
             "INSERT INTO Tirage"
             + "VALUES("
-            + obj.getIdCommande()+","+obj.getIdProduit()+","+obj.getrefTirage()+)+","+obj.getIdImage()+","+obj.getFormat()+")");
+            + obj.getIdCommande()+","+obj.getIdProduit()+","+obj.getrefTirage()+","+obj.getIdImage()+","+obj.getFormat()+")");
             return true;
         }
 	      catch (SQLException e) {

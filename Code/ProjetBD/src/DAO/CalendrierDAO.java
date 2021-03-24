@@ -1,5 +1,8 @@
 package DAO;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import Metier.Calendrier;
 
 public class CalendrierDAO extends DAO<Calendrier>{
@@ -13,7 +16,7 @@ public class CalendrierDAO extends DAO<Calendrier>{
             this.connect.createStatement().executeQuery( 
             "INSERT INTO Calendrier"
             + "VALUES("
-            + obj.getRefTirage()+","+obj.getmiseEnPage()+")");
+            + obj.getIdCommande()+","+obj.getIdProduit()+","+obj.getrefTirage()+","+obj.getIdImage()+","+obj.getFormat()+","+obj.getOrdre()+","+obj.getMiseEnPage()+")");
             return true;
         }
 	      catch (SQLException e) {
@@ -27,7 +30,7 @@ public class CalendrierDAO extends DAO<Calendrier>{
         try {
             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM Calendrier WHERE RefTirage ="+refTirage);
             if(result.next()) 
-                calendrier = new Calendrier(refTirage,result.getString("miseEnPage"));
+                calendrier = new Calendrier(result.getInt("idProduit"),result.getInt("idCommande"),refTirage,result.getInt("idImage"),result.getString("format_img"),result.getInt("Ordre"),result.getString("miseEnPage"));
             } catch (SQLException e) { e.printStackTrace();}
         return calendrier;  
     }   

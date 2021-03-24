@@ -1,15 +1,22 @@
 package Metier;
 public class Album extends Impression{
 	
-	private String titre ="";
-	private String miseEnPage ="";
-	private String descriptif =""; 
+	private String titre;
+	private String miseEnPage ;
+	private String descriptif ; 
 	
-	public Album(String titre,String miseEnPage,String descriptif,int idCommande,int idProduit,int refTirage,int idImage,String format,int ordre){
+	public Album(int idCommande,int idProduit,int refTirage,int idImage,String format,int ordre,String titre,String miseEnPage,String descriptif){
 		super(idCommande, idProduit, refTirage, idImage, format, ordre);
 		this.titre=titre;
 		this.miseEnPage=miseEnPage;
 		this.descriptif=descriptif;
+	}
+	
+	public Album(){
+		super();
+		this.titre="non";
+		this.miseEnPage="non";
+		this.descriptif="non";
 	}
 
 	public int getRefTirage() {

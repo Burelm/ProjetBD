@@ -6,6 +6,11 @@ public class Impression extends Tirage {
 		// TODO Auto-generated constructor stub
 		setOrdre(ordre);
 	}
+	public Impression() {
+		super();
+		// TODO Auto-generated constructor stub
+		setOrdre(-1);
+	}
 	public int getOrdre() {
 		return ordre;
 	}

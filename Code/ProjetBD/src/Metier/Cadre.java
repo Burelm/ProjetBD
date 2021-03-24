@@ -8,6 +8,11 @@ public class Cadre extends Impression {
 		setTaille(taille);
 		setModel(model);
 	}
+	public Cadre() {
+		super();
+		setTaille("non");
+		setModel("non");
+	}
 	public String getTaille() {
 		return taille;
 	}

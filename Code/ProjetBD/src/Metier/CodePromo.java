@@ -9,6 +9,10 @@ public class CodePromo {
         this.codePromo = codePromo;
         this.noClient = noClient;
     }
+    public CodePromo() {
+        this.codePromo = -1;
+        this.noClient = -1;
+    }
 
     public int getCodePromo(){
         return codePromo;
