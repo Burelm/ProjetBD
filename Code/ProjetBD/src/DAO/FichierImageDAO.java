@@ -1,6 +1,11 @@
 package DAO;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import Metier.FichierImage;
+import Metier.Produit;
 
 public class FichierImageDAO extends DAO<FichierImage>{
     
@@ -23,14 +28,22 @@ public class FichierImageDAO extends DAO<FichierImage>{
 	}
     }
     
-    public FichierImage read(int idImage) {
-    	FichierImage image = new FichierImage();      
+    public FichierImage read(int idImage) {    
         try {
             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM FichierImage WHERE idImage ="+idImage);
             if(result.next()) 
-                image = new Produit(idImage,result.getString("chemin_access"),result.getInt("noClient"),result.getString("Resolution"),result.getDate("dateDerniereUtilisation"),result.getString("paramRetouche"),result.getString("paramRetouche"),result.getString("PriseDeVue"),result.getBoolean("Partage"));
+                return new FichierImage(idImage,result.getInt("noClient"),result.getString("chemin_access"),result.getString("Resolution"),result.getString("paramRetouche"),result.getString("PriseDeVue"),result.getBoolean("Partage"),result.getDate("dateDerniereUtilisation"));
             } catch (SQLException e) { e.printStackTrace(); }
-        return image;  
+        return null;  
+    }
+    public ArrayList<FichierImage> readAll(int idClient) {
+    	ArrayList<FichierImage> lesFichiersImage = new ArrayList<FichierImage>();
+    	try {
+            ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM FichierImage WHERE noClient ="+idClient);
+            while (result.next()) 
+                lesFichiersImage.add(new FichierImage(result.getInt("idImage"),result.getInt("noClient"),result.getString("chemin_access"),result.getString("Resolution"),result.getString("paramRetouche"),result.getString("PriseDeVue"),result.getBoolean("Partage"),result.getDate("dateDerniereUtilisation"))) ;
+            } catch (SQLException e) { e.printStackTrace(); }
+        return lesFichiersImage;  
     }
     
 }
