@@ -2,8 +2,8 @@ package Metier;
 
 public class Produit {
 
-    enum TypeI {BONNE, MOYENNE, HAUTE} ;  
-    enum TypeQ {TIRAGE, IMPRESSION, CADRE, CALENDRIER, ALBUM} ;  
+    public enum TypeI {BONNE, MOYENNE, HAUTE} ;  
+    public enum TypeQ {TIRAGE, IMPRESSION, CADRE, CALENDRIER, ALBUM} ;  
 
     private int idProduit; //ID
     private TypeI typeImpr; //Impression

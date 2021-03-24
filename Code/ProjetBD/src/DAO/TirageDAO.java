@@ -1,5 +1,7 @@
 package DAO;
 import java.sql.Connection;
+import java.sql.SQLException;
+
 import Metier.Tirage;
 
 public class TirageDAO extends DAO<Tirage>{
