@@ -32,7 +32,7 @@ public class FichierImage {
 	public int getNoClient() {
 		return noClient;
 	}
-	public void setNoClient(noClient) {
+	public void setNoClient(int noClient) {
 		this.noClient = noClient;
 	}
 	public String getChemin_acces() {

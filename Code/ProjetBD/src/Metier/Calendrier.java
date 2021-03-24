@@ -1,6 +1,6 @@
-package Calendrier;
+package Metier;
 
-public class Impression extends Impression {
+public class Calendrier extends Impression {
     private String miseEnPage;
   
     public Calendrier(int idCommande, int idProduit, int refTirage, int idImage, String format, int ordre, String miseEnPage) {
@@ -10,7 +10,7 @@ public class Impression extends Impression {
 	  public String getMiseEnPage() {
 		    return miseEnPage;
 	  }
-	  public void setMiseEnPage(String MiseEnPage) {
+	  public void setMiseEnPage(String miseEnPage) {
 		    this.miseEnPage = miseEnPage;
 	  }
 }

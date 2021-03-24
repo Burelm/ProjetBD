@@ -1,3 +1,5 @@
+package Metier;
+
 public class CodePromo {
 
     private int codePromo; //codePromo

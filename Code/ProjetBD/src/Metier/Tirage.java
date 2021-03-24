@@ -1,11 +1,11 @@
 package Metier;
 
 public class Tirage {
-	private int idCommande;
-	private int idProduit;
-	private int refTirage;
-	private int idImage;
-	private String format;
+	protected int idCommande;
+	protected int idProduit;
+	protected int refTirage;
+	protected int idImage;
+	protected String format;
 	
 	
 	

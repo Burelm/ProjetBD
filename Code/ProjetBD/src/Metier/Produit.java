@@ -1,3 +1,5 @@
+package Metier;
+
 public class Produit {
 
     enum TypeI {BONNE, MOYENNE, HAUTE} ;  
@@ -5,14 +7,14 @@ public class Produit {
 
     private int idProduit; //ID
     private TypeI typeImpr; //Impression
-    private TypeQ Qualité; //Qualité
+    private TypeQ Qualite; //Qualité
     private float Prix; //Prix
     private String Description; //Description
 
-    public Produit(int idProduit, TypeI typeImpr, TypeQ Qualité, float Prix, String Description) {
+    public Produit(int idProduit, TypeI typeImpr, TypeQ Qualite, float Prix, String Description) {
         this.idProduit = idProduit;
         this.typeImpr = typeImpr;
-        this.Qualité = Qualité;
+        this.Qualite = Qualite;
         this.Prix = Prix;
         this.Description = Description;
     }
@@ -34,11 +36,11 @@ public class Produit {
     }
 
     public TypeQ getTypeQualite(){
-        return Qualité;
+        return Qualite;
     }
 
-    public void setTypeQualite(TypeQ Qualité){
-        this.Qualité = Qualité;
+    public void setTypeQualite(TypeQ Qualite){
+        this.Qualite = Qualite;
     }
 
     public float getPrix(){

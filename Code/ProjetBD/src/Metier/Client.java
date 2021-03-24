@@ -1,21 +1,23 @@
-Class Client
-import java.util.HashSet;
-import java.util.Set;
+package Metier;
+
+
+import java.util.ArrayList;
+
 public class Client {
 	private int noClient = 0; //ID
 	private String nom = ""; //Nom du prof
-	private String prenom = ""; //Prénom
+	private String prenom = ""; //Pr�nom
 	private String mail = ""; //mail
 	private String mdp = ""; //mot de passe
 	
-	private Set<Adresse> listAdresse = new HashSet<Adresse>(); //Liste des adresses
+	private ArrayList<AdresseClient> listAdresse = new ArrayList<AdresseClient>(); //Liste des adresses
 
 	public Client(int noClient, String nom,String prenom,String mail,String mdp) {
 		this.noClient = noClient;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.mail=mail
-		this.mdp=mdp
+		this.mail=mail;
+		this.mdp=mdp;
 	}
 
 	public Client(){
@@ -56,23 +58,23 @@ public class Client {
 	}
 
 	public void setMdp(String mdp) {
-		this.mdp=mdp:
+		this.mdp=mdp;
 	}
 	
-	public Set<Adresse> getListAdresse() { 
+	public ArrayList<AdresseClient> getListAdresse() { 
 		return listAdresse; 
 	}
 
-	//ajouté une liste à un client
-	public void setListAdresse(Set<listAdresse> listAdresse){
+	//ajout� une liste � un client
+	public void setListAdresse(ArrayList<AdresseClient> listAdresse){
 		this.listAdresse = listAdresse; 
 	}
 
-	//Ajouté une matière à un client
-	public void addAdresse(Adresse adresse){
+	
+	public void addAdresse(AdresseClient adresse){
 		this.listAdresse.add(adresse);
 	}
-	//Retire une matière à un client
-	public void removeMatiere(Adresse adresse){
-		this.listAdresse.remove(Adresse) }
+	
+	public void removeAdresse(AdresseClient adresse){
+		this.listAdresse.remove(adresse); }
 	}

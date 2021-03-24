@@ -1,5 +1,8 @@
 package DAO;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import Metier.Produit;
 
 public class ProduitDAO extends DAO<Produit>{
