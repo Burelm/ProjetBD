@@ -72,7 +72,7 @@ CREATE TABLE Produit( -- creer une liste de produit prédéfinie dans la documen
     idProduit NUMBER(7) PRIMARY KEY,
     typeImpr VARCHAR(20) NOT NULL CHECK (typeImpr IN('Tirage','Impression','Cadre','Calendrier','Album')),-- A gerer comme si c'était une énumeration
     Qualite VARCHAR(20) NOT NULL CHECK (Qualite IN('Bonne','Moyenne','Haute')),-- A gerer comme si c'était une énumeration
-    Prix FLOAT(2),
+    Prix FLOAT,
     Description VARCHAR(100)
 );
 
