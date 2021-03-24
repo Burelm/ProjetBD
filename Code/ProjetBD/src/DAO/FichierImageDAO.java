@@ -1,5 +1,8 @@
 package DAO;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import Metier.FichierImage;
 
 public class FichierImageDAO extends DAO<FichierImage>{
@@ -23,14 +26,13 @@ public class FichierImageDAO extends DAO<FichierImage>{
 	}
     }
     
-    public FichierImage read(int idImage) {
-    	FichierImage image = new FichierImage();      
+    public FichierImage read(int idImage) {  
         try {
             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM FichierImage WHERE idImage ="+idImage);
             if(result.next()) 
-                image = new Produit(idImage,result.getString("chemin_access"),result.getInt("noClient"),result.getString("Resolution"),result.getDate("dateDerniereUtilisation"),result.getString("paramRetouche"),result.getString("paramRetouche"),result.getString("PriseDeVue"),result.getBoolean("Partage"));
+                return new FichierImage(idImage,result.getInt("idClient"),result.getString("chemin_access"),result.getInt("noClient"),result.getString("Resolution"),result.getDate("dateDerniereUtilisation"),result.getString("paramRetouche"),result.getString("paramRetouche"),result.getString("PriseDeVue"),result.getBoolean("Partage"));
             } catch (SQLException e) { e.printStackTrace(); }
-        return image;  
+        return null;  
     }
     
 }
