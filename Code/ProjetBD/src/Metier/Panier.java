@@ -32,3 +32,4 @@ public class Panier {
         return listProduit.size();
     }
 }
+
