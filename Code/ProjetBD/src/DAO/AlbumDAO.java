@@ -28,9 +28,9 @@ public class AlbumDAO extends DAO<Album>{
     public Album read(int refTirage) {
     	  Album album = new Album();      
         try {
-            ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM Album WHERE RefTirage ="+refTirage);
+            ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM Album NATURAL JOIN tirage NATURAL JOIN Impression WHERE RefTirage ="+refTirage);
             if(result.next()) 
-                album = new Album(refTirage,result.getString("Titre"),result.getString("mieseEnPage"),result.getString("Descriptif"));
+                album = new Album(result.getInt("idProduit"),result.getInt("idCommande"),refTirage,result.getInt("idImage"),result.getString("format_img"),result.getInt("Ordre"),result.getString("Titre"),result.getString("mieseEnPage"),result.getString("Descriptif"));
             } catch (SQLException e) { e.printStackTrace(); }
         return album;  
     }

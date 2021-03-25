@@ -29,7 +29,7 @@ public class ImpressionDAO extends DAO<Impression>{
     public Impression read(int refTirage) {
     	Impression impression = new Impression();      
          try {
-             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM Tirage WHERE RefTirage ="+refTirage);
+             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM Impression NATURAL JOIN Tirage WHERE RefTirage ="+refTirage);
              if(result.next()) 
             	 impression = new Impression(result.getInt("idProduit"),result.getInt("idCommande"),refTirage,result.getInt("idImage"),result.getString("format_img"),result.getInt("Ordre"));
              } catch (SQLException e) { e.printStackTrace();}

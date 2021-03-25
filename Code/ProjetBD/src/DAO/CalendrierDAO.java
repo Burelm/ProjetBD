@@ -28,7 +28,7 @@ public class CalendrierDAO extends DAO<Calendrier>{
     public Calendrier read(int refTirage) {
     	  Calendrier calendrier = new Calendrier();      
         try {
-            ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM Calendrier WHERE RefTirage ="+refTirage);
+            ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM Calendrier NATURAL JOIN tirage NATURAL JOIN Impression WHERE RefTirage ="+refTirage);
             if(result.next()) 
                 calendrier = new Calendrier(result.getInt("idProduit"),result.getInt("idCommande"),refTirage,result.getInt("idImage"),result.getString("format_img"),result.getInt("Ordre"),result.getString("miseEnPage"));
             } catch (SQLException e) { e.printStackTrace();}
