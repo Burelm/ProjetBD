@@ -275,26 +275,26 @@ public class Test {
 							}
 							break;
 							
-						case 6://Supprime image
-							int idImage=LectureClavier.lireEntier("l'id de l'image en question");
-							DAO<FichierImage> fichierimgdao= new FichierImageDAO(TheConnection.getInstance());
-							FichierImage todelete = fichierimgdao.read(idImage);
-							String queryedquery = "{CALL imageSuppr(" + idImage + "," + Client.getnoClient() + ")}";
-						CallableStatement request;
-						try {
-							request = TheConnection.getInstance().prepareCall(queryedquery);
-							todelete = fichierimgdao.read(idImage);
-							System.out.println(todelete);
-							System.out.println("Le fichier image n'as pas été suprimé");
-							request.execute();
-							request.close();
-						} catch (SQLException e) {
-							
-							e.printStackTrace();
-						}
+						
 					
 					}
 					break;
+				case 6://Supprime image
+					int idImage=LectureClavier.lireEntier("l'id de l'image en question");
+					DAO<FichierImage> fichierimgdao= new FichierImageDAO(TheConnection.getInstance());
+					FichierImage todelete = fichierimgdao.read(idImage);
+					String queryedquery = "{CALL imageSuppr(" + idImage + "," + Client.getnoClient() + ")}";
+				CallableStatement request;
+				try {
+					request = TheConnection.getInstance().prepareCall(queryedquery);
+					todelete = fichierimgdao.read(idImage);
+					System.out.println(todelete);
+					System.out.println("Le fichier image n'as pas été suprimé");
+					request.execute();
+					request.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 					}
 			}
 			Connexion=false;
