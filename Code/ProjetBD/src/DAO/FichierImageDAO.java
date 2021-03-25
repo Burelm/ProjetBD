@@ -14,11 +14,22 @@ public class FichierImageDAO extends DAO<FichierImage>{
     }
     
     public boolean create(FichierImage obj) {
+    int id;
 	try {
+		if (obj.getIdImage() == -1) {
+			ResultSet result = this.connect.createStatement().executeQuery("SELECT max(idImage) AS ID FROM FichierImage");
+			id = 0;
+			if (result.next()) {
+			  id=result.getInt("ID");
+			  id=id+1;
+			}
+		} else {
+			id = obj.getIdImage();
+		}
 		this.connect.createStatement().executeQuery(
 		"INSERT INTO FichierImage"
 		+ "VALUES("
-		+ obj.getIdImage()+","+obj.getNoClient()+","+obj.getChemin_acces()+","+obj.getPriseDeVue()+","+obj.getParamRetouche()+","
+		+ id+","+obj.getNoClient()+","+obj.getChemin_acces()+","+obj.getPriseDeVue()+","+obj.getParamRetouche()+","
                 + obj.getResolution()+","+obj.isPartage()+","+obj.getDateDerniereUtilisation()+")");
 		return true;
 	}
@@ -32,7 +43,7 @@ public class FichierImageDAO extends DAO<FichierImage>{
         try {
             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM FichierImage WHERE idImage ="+idImage);
             if(result.next()) 
-                return new FichierImage(idImage,result.getInt("noClient"),result.getString("chemin_access"),result.getString("Resolution"),result.getString("paramRetouche"),result.getString("PriseDeVue"),result.getBoolean("Partage"),result.getDate("dateDerniereUtilisation"));
+                return new FichierImage(idImage,result.getInt("noClient"),result.getString("chemin_access"),result.getString("Resolution"),result.getString("paramRetouche"),result.getString("PriseDeVue"),result.getBoolean("Partage"),result.getString("dateDerniereUtilisation"));
             } catch (SQLException e) { e.printStackTrace(); }
         return null;  
     }
@@ -41,7 +52,7 @@ public class FichierImageDAO extends DAO<FichierImage>{
     	try {
             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM FichierImage WHERE noClient ="+idClient);
             while (result.next()) 
-                lesFichiersImage.add(new FichierImage(result.getInt("idImage"),result.getInt("noClient"),result.getString("chemin_access"),result.getString("Resolution"),result.getString("paramRetouche"),result.getString("PriseDeVue"),result.getBoolean("Partage"),result.getDate("dateDerniereUtilisation"))) ;
+                lesFichiersImage.add(new FichierImage(result.getInt("idImage"),result.getInt("noClient"),result.getString("chemin_access"),result.getString("Resolution"),result.getString("paramRetouche"),result.getString("PriseDeVue"),result.getBoolean("Partage"),result.getString("dateDerniereUtilisation"))) ;
             } catch (SQLException e) { e.printStackTrace(); }
         return lesFichiersImage;  
     }

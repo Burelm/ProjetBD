@@ -1,10 +1,14 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import DAO.ClientDAO;
 import DAO.DAO;
+import DAO.FichierImageDAO;
 import Metier.AdresseClient; 
 import DAO.LesAdressesClientsDAO;
 import Metier.Client;
+import Metier.FichierImage;
 import Metier.LesClients;
 
 
@@ -23,7 +27,7 @@ public class Test {
 		
 		while (inMenu) {
 			//Demande de choix d'action
-			System.out.println("Entrer: \n1-Ce connecter \n2-Cr√©er un nouveau compte \n3-Quitter");
+			System.out.println("Entrer: \n1-Se connecter \n2-Cr√©er un nouveau compte \n3-Quitter");
 			int menu=LectureClavier.lireEntier("Saisisez une des fonctionnalit√© :");
 			while (menu<1 && menu>3) {
 				menu = LectureClavier.lireEntier("Mauvaise fonctionnalit√© uniquement de 1 √† 3:");
@@ -101,32 +105,65 @@ public class Test {
 		}
 		
 		while(Connexion) {
+			Connexion=true;
 			System.out.println("Compte Client"+Client.getNom()+" "+Client.getPrenom());
-			System.out.println("1- Modifi√© mes Adresse de livraison\n2- modifier mes image\n3- Modifi√© une commande\n4-Ajout√© une Commande\n5- Me d√©connect√©");
-			int menu=LectureClavier.lireEntier("Saisisez une des fonctionnalit√© :");
+			System.out.println("1- AjoutÈ une Adresse de livraison\n 2- modifier mes image\n3- ModifiÈ une commande\n4-AjoutÈ une Commande\n5- Me dÈconnectÈ");
+			int menu=LectureClavier.lireEntier("Saisisez une des fonctionnalitÈ :");
 			while (menu<1 && menu>4) {
-				menu = LectureClavier.lireEntier("Mauvaise fonctionnalit√© uniquement de 1 √† 4:");
+				menu = LectureClavier.lireEntier("Mauvaise fonctionnalitÈ uniquement de 1 ‡ 4:");
 			}
 
 			switch(menu){
 				case 1:
-					/*System.out.println("Saisissez votre numero de rue:");
-					int numR=LectureClavier.lireEntier();
+					System.out.println("Saisissez votre numero de rue:");
+					int numR=LectureClavier.lireEntier("");
 
 					System.out.println("Saisissez votre nom de rue:");
 					String nomR=LectureClavier.lireChaine();
 
 					System.out.println("Saisissez votre code postal:");
-					int codeP=LectureClavier.lireEntier();
+					int codeP=LectureClavier.lireEntier("");
 
 					System.out.println("Saisissez votre ville:");
 					String villeC=LectureClavier.lireChaine();
 
 					AdresseClient adrC = new AdresseClient(nomR, numR, villeC, codeP);
-					adresseDao.create(adrC);*/
+					ArrayList<AdresseClient> newadress= new ArrayList<AdresseClient>();
+					newadress.add(adrC);
+					DAO<ArrayList<AdresseClient>> ajoutAdresseDao = new LesAdressesClientsDAO(TheConnection.getInstance(),Client.getnoClient());
+					ajoutAdresseDao.create(newadress);
+					Client.addAdresse(adrC);
 					break;
-					
-
+				case 2:
+					boolean continuer = true;
+					while(continuer) {
+						System.out.println("Saisissez l'URL de votre image");
+						String url = LectureClavier.lireChaine();
+						System.out.println("Saisissez la prise de vue de votre image");
+						String priseDeVue = LectureClavier.lireChaine();
+						System.out.println("Saisissez le paramËtre de retouche de votre image");
+						String parametreRetouche = LectureClavier.lireChaine();
+						System.out.println("Saisissez la rÈsolution de votre image");
+						String resolution = LectureClavier.lireChaine();
+						System.out.println("Souhaitez vous partager l'image ? (oui/non)");
+						String choix = LectureClavier.lireChaine();
+						boolean partage;
+						while (choix != "oui" && choix != "non") {
+							System.out.println("Erreur : Mot incorrect. Saisir oui ou non");
+							choix = LectureClavier.lireChaine();
+						}
+						if (choix == "oui") {
+							partage = true;
+						} else {
+							partage = false;
+						}
+						Date date = new Date();
+						SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
+						
+						FichierImage fi = new FichierImage(Client.getnoClient(), url, priseDeVue, parametreRetouche, resolution, partage, formater.format(date));
+						FichierImageDAO fiDAO = new FichierImageDAO(TheConnection.getInstance());
+						fiDAO.create(fi);
+					}
 			}
 			Connexion=false;
 		}

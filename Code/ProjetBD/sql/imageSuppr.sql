@@ -1,0 +1,8 @@
+CREATE OR REPLACE PROCEDURE imageSuppr (iddImage IN INT)
+IS
+BEGIN
+DELETE FROM FichierImage
+WHERE idIMage = iddImage AND iddImage NOT IN (SELECT idImage FROM TIRAGE);
+COMMIT;
+END;
+/

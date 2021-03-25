@@ -10,11 +10,24 @@ public class FichierImage {
 	private String paramRetouche;
 	private String resolution;
 	private boolean partage;
-	private Date dateDerniereUtilisation;
+	private String dateDerniereUtilisation;
 	
 	public FichierImage(int idImage, int noClient, String chemin_acces, String priseDeVue, String paramRetouche, String resolution,
-			boolean partage, Date dateDerniereUtilisation) {
+			boolean partage, String dateDerniereUtilisation) {
 		this.idImage = idImage;
+		this.noClient = noClient;
+		this.chemin_acces = chemin_acces;
+		this.priseDeVue = priseDeVue;
+		this.paramRetouche = paramRetouche;
+		this.resolution = resolution;
+		this.partage = partage;
+		this.dateDerniereUtilisation = dateDerniereUtilisation;
+	}
+	
+	//Constructeur qui permet qui permet de ne pas spécifier d'ID image, il sera affecté lors de l'ajout à la base
+	public FichierImage(int noClient, String chemin_acces, String priseDeVue, String paramRetouche, String resolution,
+			boolean partage, String dateDerniereUtilisation) {
+		this.idImage = -1;
 		this.noClient = noClient;
 		this.chemin_acces = chemin_acces;
 		this.priseDeVue = priseDeVue;
@@ -65,10 +78,10 @@ public class FichierImage {
 	public void setPartage(boolean partage) {
 		this.partage = partage;
 	}
-	public Date getDateDerniereUtilisation() {
+	public String getDateDerniereUtilisation() {
 		return dateDerniereUtilisation;
 	}
-	public void setDateDerniereUtilisation(Date dateDerniereUtilisation) {
+	public void setDateDerniereUtilisation(String dateDerniereUtilisation) {
 		this.dateDerniereUtilisation = dateDerniereUtilisation;
 	}
 
