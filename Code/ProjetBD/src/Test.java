@@ -55,10 +55,10 @@ public class Test {
 		
 		while (inMenu) {
 			//Demande de choix d'action
-			System.out.println("Entrer: \n1-Se connecter \n2-CrÃƒÂ©er un nouveau compte \n3-Quitter");
-			int menu=LectureClavier.lireEntier("Saisisez une des fonctionnalitÃƒÂ© :");
+			System.out.println("Entrer: \n1-Se connecter \n2-CrÃƒÆ’Ã‚Â©er un nouveau compte \n3-Quitter");
+			int menu=LectureClavier.lireEntier("Saisisez une des fonctionnalitÃƒÆ’Ã‚Â© :");
 			while (menu<1 && menu>3) {
-				menu = LectureClavier.lireEntier("Mauvaise fonctionnalitÃƒÂ© uniquement de 1 ÃƒÂ  3:");
+				menu = LectureClavier.lireEntier("Mauvaise fonctionnalitÃƒÆ’Ã‚Â© uniquement de 1 ÃƒÆ’Ã‚Â  3:");
 			}
 
 			//Cas des different choix
@@ -74,7 +74,7 @@ public class Test {
 						mdp = LectureClavier.lireChaine();
 						while (!Client.getMdp().equals(mdp)&& menu==1) {
 							System.out.println("Mauvais mot de passe !");
-							System.out.println("Saissir:\n 1- Pour rÃƒÂ©essayer\n 2- Pour revenir au menu");
+							System.out.println("Saissir:\n 1- Pour rÃƒÆ’Ã‚Â©essayer\n 2- Pour revenir au menu");
 							menu = LectureClavier.lireEntier("");
 							if (menu == 1) {
 								System.out.println("Mot de passe:");
@@ -89,7 +89,7 @@ public class Test {
 					}
 					else {
 						System.out.println("Compte inexistant !");
-						menu=LectureClavier.lireEntier("1- RÃƒÂ©essayÃƒÂ© avec un nouveau mail\n2- Creer un nouveau compte\n3-Quitter");
+						menu=LectureClavier.lireEntier("1- RÃƒÆ’Ã‚Â©essayÃƒÆ’Ã‚Â© avec un nouveau mail\n2- Creer un nouveau compte\n3-Quitter");
 					}
 					break;
 
@@ -117,7 +117,7 @@ public class Test {
 					}
 					else {
 						  System.out.println("Compte existant !");
-						  menu=LectureClavier.lireEntier("1- RÃƒÂ©essayÃƒÂ© avec un nouveau mail\n2- Creer un nouveau compte\n3-Quitter");
+						  menu=LectureClavier.lireEntier("1- RÃƒÆ’Ã‚Â©essayÃƒÆ’Ã‚Â© avec un nouveau mail\n2- Creer un nouveau compte\n3-Quitter");
 					}
 					Connexion = false;
 					inMenu = true;
@@ -135,10 +135,10 @@ public class Test {
 		while(Connexion) {
 			Connexion=true;
 			System.out.println("Compte Client"+Client.getNom()+" "+Client.getPrenom());
-			System.out.println("1- AjoutÃ© une Adresse de livraison\n 2- modifier mes image\n3- ModifiÃ© une commande\n4-AjoutÃ© une Commande\n5- Me dÃ©connectÃ©");
-			int menu=LectureClavier.lireEntier("Saisisez une des fonctionnalitÃ© :");
+			System.out.println("1- AjoutÃƒÂ© une Adresse de livraison\n 2- modifier mes image\n3- ModifiÃƒÂ© une commande\n4-AjoutÃƒÂ© une Commande\n5- Me dÃƒÂ©connectÃƒÂ©");
+			int menu=LectureClavier.lireEntier("Saisisez une des fonctionnalitÃƒÂ© :");
 			while (menu<1 && menu>4) {
-				menu = LectureClavier.lireEntier("Mauvaise fonctionnalitÃ© uniquement de 1 Ã  4:");
+				menu = LectureClavier.lireEntier("Mauvaise fonctionnalitÃƒÂ© uniquement de 1 ÃƒÂ  4:");
 			}
 
 			switch(menu){
@@ -169,9 +169,9 @@ public class Test {
                         String url = LectureClavier.lireChaine();
                         System.out.println("Saisissez la prise de vue de votre image");
                         String priseDeVue = LectureClavier.lireChaine();
-                        System.out.println("Saisissez le paramï¿½tre de retouche de votre image");
+                        System.out.println("Saisissez le paramÃ¯Â¿Â½tre de retouche de votre image");
                         String parametreRetouche = LectureClavier.lireChaine();
-                        System.out.println("Saisissez la rï¿½solution de votre image");
+                        System.out.println("Saisissez la rÃ¯Â¿Â½solution de votre image");
                         String resolution = LectureClavier.lireChaine();
                         System.out.println("Souhaitez vous partager l'image ? (oui/non)");
                         String choix = LectureClavier.lireChaine();
@@ -209,12 +209,12 @@ public class Test {
 					
 				case 3:
 					int idProduit;
-					int typeProduit=LectureClavier.lireEntier("Vous souhaitez crÃ©e un produit, veuillez choisir son type ci dessous:\n 1:Tirage\n 2:Impression\n 3:Cadre\n 4:Album\n 5:Calendrier\n");
+					int typeProduit=LectureClavier.lireEntier("Vous souhaitez crÃƒÂ©e un produit, veuillez choisir son type ci dessous:\n 1:Tirage\n 2:Impression\n 3:Cadre\n 4:Album\n 5:Calendrier\n");
 					int nbrPhoto=LectureClavier.lireEntier("Combien voulez vous de photo dans votre tirage ?");
 					ArrayList<FichierImage> photoDispo= FimageDAO.readAll(Client.getnoClient());
 					ArrayList<Integer> listPhoto = new ArrayList<Integer>();
 					ArrayList<String> formatImage=new ArrayList<String>();
-					int idCommande=0;//ici requÃªte de Tariq
+					int idCommande=0;//ici requÃƒÂªte de Tariq
 					String miseEnPage;
 					switch(typeProduit) {
 						case 1://tirage
@@ -226,7 +226,7 @@ public class Test {
 							break;
 						case 2://impression
 							idProduit=1;
-							System.out.println("Penser Ã  rentre vos photo dans l'ordre dans lequel elles doivent apparaitre");
+							System.out.println("Penser ÃƒÂ  rentre vos photo dans l'ordre dans lequel elles doivent apparaitre");
 							Choix(photoDispo,listPhoto,formatImage,nbrPhoto);
 							for(int i=0;i<listPhoto.size();i++) {
 								impressionDAO.create(new Impression(idCommande,idProduit,i,listPhoto.get(i),formatImage.get(i),i));
@@ -234,13 +234,13 @@ public class Test {
 							break;
 						case 3://cadre
 							idProduit=2;
-							System.out.println("Quel ModÃ¨le de cadre ?");
+							System.out.println("Quel ModÃƒÂ¨le de cadre ?");
 
 							String model=LectureClavier.lireChaine();
 							System.out.println("Quel Taille ?");
 
 							String taille=LectureClavier.lireChaine();
-							System.out.println("Penser Ã  rentre vos photo dans l'ordre dans lequel elles doivent apparaitre");
+							System.out.println("Penser ÃƒÂ  rentre vos photo dans l'ordre dans lequel elles doivent apparaitre");
 							Choix(photoDispo,listPhoto,formatImage,nbrPhoto);
 							for(int i=0;i<listPhoto.size();i++) {
 								
@@ -251,7 +251,7 @@ public class Test {
 							idProduit=3;
 							
 							
-							System.out.println("Penser Ã  rentre vos photo dans l'ordre dans lequel elles doivent apparaitre");
+							System.out.println("Penser ÃƒÂ  rentre vos photo dans l'ordre dans lequel elles doivent apparaitre");
 							Choix(photoDispo,listPhoto,formatImage,nbrPhoto);
 							for(int i=0;i<listPhoto.size();i++) {
 								System.out.println("Quel mise en page ?");
@@ -266,7 +266,7 @@ public class Test {
 							
 							
 							String descriptif;
-							System.out.println("Penser Ã  rentre vos photo dans l'ordre dans lequel elles doivent apparaitre");
+							System.out.println("Penser ÃƒÂ  rentre vos photo dans l'ordre dans lequel elles doivent apparaitre");
 							Choix(photoDispo,listPhoto,formatImage,nbrPhoto);
 							for(int i=0;i<listPhoto.size();i++) {
 								System.out.println("Quel mise en page ?");
@@ -282,16 +282,16 @@ public class Test {
 					}
 					break;
 				case 5: // Consultation
-					int choix = LectureClavier.lireEntier("1- Consulter une commande \n 2- Informations Compte \n 3- Liste des impressions \n 4- Liste des images partag�es");
+					int choix = LectureClavier.lireEntier("1- Consulter une commande \n 2- Informations Compte \n 3- Liste des impressions \n 4- Liste des images partagées");
 					switch(choix) {
 					case 1:
 						ArrayList<Integer> idCommandes = new ArrayList<Integer>();
 						CommandeDAO commandeDAO = new CommandeDAO(TheConnection.getInstance());
 						for (Commande commande: commandeDAO.readAll(Client.getnoClient())) {
 							System.out.println(commande.getidCommande());
-							idCommandes.add(commande.getidCommande());//Peut �tre qu'il manque un CAST
+							idCommandes.add(commande.getidCommande());//Peut être qu'il manque un CAST
 						}
-						int idCommandeConsult = LectureClavier.lireEntier("Saisir la commande � consulter");
+						int idCommandeConsult = LectureClavier.lireEntier("Saisir la commande à consulter");
 						//TODO Controle de saisie
 						commandeDAO.read(idCommandeConsult).afficher();
 						break;
@@ -300,7 +300,7 @@ public class Test {
 						//TODO Afficher les codes promos
 						break;
 					case 3:
-						System.out.println("Fonctionnalit� pas encore impl�ment�e");
+						System.out.println("Fonctionnalité pas encore implémentée");
 						break;
 					case 4:
 						ArrayList<FichierImage> lesFichiersImage = FimageDAO.readAll(Client.getnoClient());
@@ -313,6 +313,12 @@ public class Test {
 					
 					break;
 				case 6://Supprime image
+					System.out.println("liste de mes photos");
+					FichierImageDAO fiDAO = new FichierImageDAO(TheConnection.getInstance());
+					ArrayList<FichierImage> mesphoto=fiDAO.readAll(Client.getnoClient());
+					for(int i=0;i<mesphoto.size();i++) {
+						System.out.println(mesphoto.get(i).afficherImage());
+					}
 					int idImage=LectureClavier.lireEntier("l'id de l'image en question");
 					DAO<FichierImage> fichierimgdao= new FichierImageDAO(TheConnection.getInstance());
 					FichierImage todelete = fichierimgdao.read(idImage);
@@ -322,7 +328,7 @@ public class Test {
 					request = TheConnection.getInstance().prepareCall(queryedquery);
 					todelete = fichierimgdao.read(idImage);
 					System.out.println(todelete);
-					System.out.println("Le fichier image n'as pas été suprimé");
+					System.out.println("Le fichier image n'as pas Ã©tÃ© suprimÃ©");
 					request.execute();
 					request.close();
 				} catch (SQLException e) {
