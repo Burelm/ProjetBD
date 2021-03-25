@@ -300,7 +300,7 @@ public class Test {
 						//TODO Afficher les codes promos
 						break;
 					case 3:
-						System.out.println("g pa lu");
+						System.out.println("Fonctionnalité pas encore implémentée");
 						break;
 					case 4:
 						ArrayList<FichierImage> lesFichiersImage = FimageDAO.readAll(Client.getnoClient());
