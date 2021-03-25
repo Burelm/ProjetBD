@@ -1,20 +1,3 @@
-INSERT INTO LesClients VALUES (NULL,NULL,NULL,NULL,NULL,NULL);                               --PAS VALIDE
-INSERT INTO LesClients VALUES (-1,"","","","",5);                                            --PAS VALIDE
-INSERT INTO LesAdresseClients VALUES (NULL,NULL,NULL,NULL,NULL,NULL);                        --PAS VALIDE
-INSERT INTO LesAdresseClients VALUES (-1,0,"Notworking",0,"NotexistantLand","00000");        --PAS VALIDE
-INSERT INTO FichierImage VALUES (NULL,NULL,NULL,NULL,NULL,NULL,NULL);                        --PAS VALIDE
-INSERT INTO LesCommandes VALUES (NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);                   --PAS VALIDE
-INSERT INTO LesCommandes VALUES (3,2,"22/03/21","normale",1,"préparé",3);                    --PAS VALIDE
-INSERT INTO Panier VALUES (NULL,NULL);                                                       --PAS VALIDE
-INSERT INTO Panier VALUES (-1,0);                                                            --PAS VALIDE
-INSERT INTO CodePromo VALUES (NULL,NULL);                                                    --PAS VALIDE
-INSERT INTO Produit VALUES (NULL,NULL,NULL,NULL);                                            --PAS VALIDE
-INSERT INTO Tirage VALUES (NULL,NULL,NULL,NULL,NULL);                                        --PAS VALIDE
-INSERT INTO Album VALUES (NULL,NULL,NULL,NULL);                                              --PAS VALIDE
-INSERT INTO Impression VALUES (NULL,NULL);                                                   --PAS VALIDE
-INSERT INTO Calendrier VALUES (NULL,NULL);                                                   --PAS VALIDE
-INSERT INTO Cadre VALUES (NULL,NULL,NULL);                                                   --PAS VALIDE
-
 INSERT INTO LesClients VALUES (1,'JJD@test.ts','Dupont','Jean-Jacque','1234',1);
 INSERT INTO LesClients VALUES (2,'MD@test.ts','Dubourg','Micheline','5678',1);
 INSERT INTO LesClients VALUES (3,'Deactivated@sadness.swag','Deactivated','Acount','0000',0);
@@ -39,19 +22,19 @@ INSERT INTO LesAdresseClients VALUES (8, 4, 'Rue du Velodrome', 58, 'Marseille',
 
 
 
-INSERT INTO FichierImage VALUES (1,'/user/jj/image/photo1.png',1,'Incroyable plan raprocher','zoom *3 non pixelisé sur la libellule','4096*2160',0,TO_DATE('22/03/21','DD/MM/YYYY'));
-INSERT INTO FichierImage VALUES (2,'/user/jj/image/photo2.png',1,'Petit plan Américain','effet sepia','1920*1080',1,TO_DATE('22/03/21','DD/MM/YYYY'));
-INSERT INTO FichierImage VALUES (3,'/user/md/image/lune.png',2,'Cadrage en contre plongé','Augmentation contraste','2560*1440',1,TO_DATE('15/03/21','DD/MM/YYYY'));
-INSERT INTO FichierImage VALUES (4,'/user/md/image/famille.png',2,'Plan moyen','noir et blanc','1280*720',0,TO_DATE('16/03/21','DD/MM/YYYY'));
-INSERT INTO FichierImage VALUES (5,'/user/md/image/lewanski.png',2,'Plan raproché épaule','pas de retouche','4096*2160',0,TO_DATE('21/03/21','DD/MM/YYYY'));
-INSERT INTO FichierImage VALUES (6,'/user/md/image/funtogether.png',2,'Plan d ensemble','effet sepia','1920*1080',1,TO_DATE('22/03/21','DD/MM/YYYY'));
+INSERT INTO FichierImage VALUES (1,'/user/jj/image/photo1.png',1,'Incroyable plan raprocher','zoom *3 non pixelisé sur la libellule','4096*2160',0,TO_DATE('22/03/2021','DD/MM/YYYY'));
+INSERT INTO FichierImage VALUES (2,'/user/jj/image/photo2.png',1,'Petit plan Américain','effet sepia','1920*1080',1,TO_DATE('22/03/2021','DD/MM/YYYY'));
+INSERT INTO FichierImage VALUES (3,'/user/md/image/lune.png',2,'Cadrage en contre plongé','Augmentation contraste','2560*1440',1,TO_DATE('15/03/2021','DD/MM/YYYY'));
+INSERT INTO FichierImage VALUES (4,'/user/md/image/famille.png',2,'Plan moyen','noir et blanc','1280*720',0,TO_DATE('16/03/2021','DD/MM/YYYY'));
+INSERT INTO FichierImage VALUES (5,'/user/md/image/lewanski.png',2,'Plan raproché épaule','pas de retouche','4096*2160',0,TO_DATE('21/03/2021','DD/MM/YYYY'));
+INSERT INTO FichierImage VALUES (6,'/user/md/image/funtogether.png',2,'Plan d ensemble','effet sepia','1920*1080',1,TO_DATE('22/03/2021','DD/MM/YYYY'));
 
 
-INSERT INTO LesCommandes VALUES (1,1,TO_DATE('23/03/21','DD/MM/YYYY'),'expresse',1,'encours',1);
-INSERT INTO LesCommandes VALUES (2,1,TO_DATE('20/03/21','DD/MM/YYYY'),'normale',0,'expedie',2);
-INSERT INTO LesCommandes VALUES (3,2,TO_DATE('22/03/21','DD/MM/YYYY'),'normale',1,'encours',3);   
-INSERT INTO LesCommandes VALUES (4,2,TO_DATE('22/03/21','DD/MM/YYYY'),'normale',1,'valide',3);
-INSERT INTO LesCommandes VALUES (5,2,TO_DATE('22/03/21','DD/MM/YYYY'),'rapide',0,'prepare',3);
+INSERT INTO LesCommandes VALUES (1,1,TO_DATE('23/03/2021','DD/MM/YYYY'),'expresse',1,'encours',1);
+INSERT INTO LesCommandes VALUES (2,1,TO_DATE('20/03/2021','DD/MM/YYYY'),'normale',0,'expédié',2);
+INSERT INTO LesCommandes VALUES (3,2,TO_DATE('22/03/2021','DD/MM/YYYY'),'normale',1,'encours',3);   
+INSERT INTO LesCommandes VALUES (4,2,TO_DATE('22/03/2021','DD/MM/YYYY'),'normale',1,'valide',3);
+INSERT INTO LesCommandes VALUES (5,2,TO_DATE('22/03/2021','DD/MM/YYYY'),'rapide',0,'préparé',3);
 
 
 INSERT INTO Panier VALUES (1,1);
@@ -126,4 +109,5 @@ INSERT INTO Album VALUES (18,'Ma famille','Photo centrée titre en dessous et de
 INSERT INTO Impression VALUES (19,2);
 INSERT INTO Impression VALUES (20,1);
 INSERT INTO Impression VALUES (21,3);
+
 
