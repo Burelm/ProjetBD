@@ -154,34 +154,47 @@ public class Test {
 					Client.addAdresse(adrC);
 					break;
 				case 2:
-					boolean continuer = true;
-					while(continuer) {
-						System.out.println("Saisissez l'URL de votre image");
-						String url = LectureClavier.lireChaine();
-						System.out.println("Saisissez la prise de vue de votre image");
-						String priseDeVue = LectureClavier.lireChaine();
-						System.out.println("Saisissez le paramÃ¨tre de retouche de votre image");
-						String parametreRetouche = LectureClavier.lireChaine();
-						System.out.println("Saisissez la rÃ©solution de votre image");
-						String resolution = LectureClavier.lireChaine();
-						System.out.println("Souhaitez vous partager l'image ? (oui/non)");
-						String choix = LectureClavier.lireChaine();
-						boolean partage;
-						while (choix != "oui" && choix != "non") {
-							System.out.println("Erreur : Mot incorrect. Saisir oui ou non");
-							choix = LectureClavier.lireChaine();
-						}
-						if (choix == "oui") {
-							partage = true;
-						} else {
-							partage = false;
-						}
-						Date date = new Date();
-						SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
-						
-						FichierImage fi = new FichierImage(Client.getnoClient(), url, priseDeVue, parametreRetouche, resolution, partage, formater.format(date));
-						FichierImageDAO fiDAO = new FichierImageDAO(TheConnection.getInstance());
-						fiDAO.create(fi);
+                    boolean continuer = true;
+                    while(continuer) {
+                        System.out.println("Saisissez l'URL de votre image");
+                        String url = LectureClavier.lireChaine();
+                        System.out.println("Saisissez la prise de vue de votre image");
+                        String priseDeVue = LectureClavier.lireChaine();
+                        System.out.println("Saisissez le paramètre de retouche de votre image");
+                        String parametreRetouche = LectureClavier.lireChaine();
+                        System.out.println("Saisissez la résolution de votre image");
+                        String resolution = LectureClavier.lireChaine();
+                        System.out.println("Souhaitez vous partager l'image ? (oui/non)");
+                        String choix = LectureClavier.lireChaine();
+                        boolean partage;
+                        while (!choix.equals("oui") && !choix.equals("non")) {
+                            System.out.println("Erreur : Mot incorrect. Saisir oui ou non");
+                            choix = LectureClavier.lireChaine();
+                        }
+                        if (choix.equals("oui")) {
+                            partage = true;
+                        } else {
+                            partage = false;
+                        }
+                        Long millis = System.currentTimeMillis();
+                        Date date = new Date(millis);
+                        SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
+                        
+                        FichierImage fi = new FichierImage(Client.getnoClient(), url, priseDeVue, parametreRetouche, resolution, partage, formater.format(date));
+                        FichierImageDAO fiDAO = new FichierImageDAO(TheConnection.getInstance());
+                        fiDAO.create(fi);
+                        
+                        System.out.println("Voulez vous mettre une autre image ?");
+                        choix = LectureClavier.lireChaine();
+                        while (!choix.equals("oui") && !choix.equals("non")) {
+                            System.out.println("Erreur : Mot incorrect. Saisir oui ou non");
+                            choix = LectureClavier.lireChaine();
+                        }
+                        if (choix.equals("non")) {
+                            continuer = false;
+                        }
+                    }
+                    break;
 						
 						
 					
@@ -257,7 +270,7 @@ public class Test {
 			Connexion=false;
 		}
 		
-		System.out.println ("Au revoir !!!");
+		System.out.println("Au revoir !!!");
 		/*
 		System.out.println (listeClients.getClient(0).getNom()+ " "+listeClients.getClient(0).getMail()+"--"+listeClients.getClient(0).getMdp());
 		System.out.println (listeClients.getClient(1).getNom()+" "+listeClients.getClient(1).getMail());
