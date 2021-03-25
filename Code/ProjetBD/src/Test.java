@@ -32,6 +32,9 @@ public class Test {
 		CalendrierDAO calendrierDAO= new CalendrierDAO(TheConnection.getInstance());
 		FichierImageDAO FimageDAO =new FichierImageDAO(TheConnection.getInstance());	
 	    	DAO<LesClients> clientDao = new ClientDAO(TheConnection.getInstance());
+		DAO<Commande> commandeDao = new CommandeDAO(TheConnection.getInstance());
+    		DAO<Produit> produitDao = new ProduitDAO(TheConnection.getInstance());
+    		DAO<CodePromo> promoDao = new CodePromoDAO(TheConnection.getInstance());
 		DAO<ArrayList<AdresseClient>> adresseDao = new LesAdressesClientsDAO(TheConnection.getInstance());
 		LesClients listeClients = clientDao.read(1);
 		
