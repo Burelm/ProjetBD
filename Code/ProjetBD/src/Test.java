@@ -1,3 +1,5 @@
+import java.sql.CallableStatement;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -278,6 +280,37 @@ public class Test {
 						
 					
 					}
+					break;
+				case 5: // Consultation
+					int choix = LectureClavier.lireEntier("1- Consulter une commande \n 2- Informations Compte \n 3- Liste des impressions \n 4- Liste des images partagées");
+					switch(choix) {
+					case 1:
+						ArrayList<Integer> idCommandes = new ArrayList<Integer>();
+						CommandeDAO commandeDAO = new CommandeDAO(TheConnection.getInstance());
+						for (Commande commande: commandeDAO.readAll(Client.getnoClient())) {
+							System.out.println(commande.getidCommande());
+							idCommandes.add(commande.getidCommande());//Peut être qu'il manque un CAST
+						}
+						int idCommandeConsult = LectureClavier.lireEntier("Saisir la commande à consulter");
+						//TODO Controle de saisie
+						commandeDAO.read(idCommandeConsult).afficher();
+						break;
+					case 2:
+						Client.afficher();
+						//TODO Afficher les codes promos
+						break;
+					case 3:
+						System.out.println("g pa lu");
+						break;
+					case 4:
+						ArrayList<FichierImage> lesFichiersImage = FimageDAO.readAll(Client.getnoClient());
+						for(FichierImage fi : lesFichiersImage) {
+							if(fi.isPartage()) {
+								fi.afficher();
+							}
+						}
+					}
+					
 					break;
 				case 6://Supprime image
 					int idImage=LectureClavier.lireEntier("l'id de l'image en question");
