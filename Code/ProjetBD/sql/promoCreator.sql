@@ -1,5 +1,5 @@
 CREATE OR REPLACE TRIGGER promoCreator
-AFTER INSERT ON LesCommandes
+BEFORE INSERT ON LesCommandes
 FOR EACH ROW
   DECLARE 
    sumPrice INT;
