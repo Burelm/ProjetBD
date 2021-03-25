@@ -22,7 +22,7 @@ CREATE TABLE LesClients(
 );
 
 CREATE TABLE LesAdresseClients(
-    idAdresse NUMBER(7),
+    idAdresse NUMBER(7) AUTO_INCREMENT,
     noClient NUMBER(7),
     nomRue VARCHAR(50),
     noRue NUMBER(3),
@@ -46,8 +46,8 @@ CREATE TABLE FichierImage(
 
 CREATE TABLE LesCommandes(
 	idCommande NUMBER(7) PRIMARY KEY,
-	noClient NUMBER(7), 
-	dateCommande DATE, 
+	noClient NUMBER(7),
+	dateCommande DATE,
 	livraison VARCHAR(10) NOT NULL CHECK (livraison IN('expresse', 'normale', 'rapide')),
 	Promo NUMBER(1),
 	Statut VARCHAR(10) NOT NULL CHECK (Statut IN('encours', 'valide', 'prepare','expedie')),
