@@ -103,6 +103,14 @@ public class Commande {
 	public void setCodePromo(AdresseClient adresseClient) {
 		this.adresseClient=adresseClient;
 	}
+	public void afficher() {
+		System.out.println("Commande effectuée le " + this.date + "\n Statut : " + this.Statut + " \n Livraison à : " + this.adresseClient.AfficherAdrr() + " \n Total de la commande : " + this.prix + "€");
+		if (this.CodePromo) {
+			System.out.println("Promotion Utilisée pour la commande");
+		}
+		System.out.println("Contenu de la commande : \n");
+		this.panier.afficher();
+	}
 	
 	
 }

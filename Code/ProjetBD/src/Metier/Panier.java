@@ -31,5 +31,12 @@ public class Panier {
     public int length(){
         return listProduit.size();
     }
+    public void afficher() {
+    	for(Produit produit : this.listProduit) {
+    		produit.afficher();
+        	System.out.println("--------------------------------------");
+    	}
+
+    }
 }
 

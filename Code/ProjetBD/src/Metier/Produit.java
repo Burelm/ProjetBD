@@ -58,6 +58,9 @@ public class Produit {
     public void setDescription(String Description){
         this.Description = Description;
     }
+    public void afficher() {
+    	System.out.println("Identifiant Produit : " + this.idProduit + " \n Description : " + this.Description + "\n Type Impression : " + this.typeImpr + "\n Qualité" + this.Qualite + "\n Prix : " + this.Prix + "€");
+    }
 
 }
 

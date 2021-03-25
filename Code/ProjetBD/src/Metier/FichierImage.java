@@ -84,5 +84,8 @@ public class FichierImage {
 	public void setDateDerniereUtilisation(String dateDerniereUtilisation) {
 		this.dateDerniereUtilisation = dateDerniereUtilisation;
 	}
+	public void afficher() {
+		System.out.println("Identifiant Image : " + idImage + "\n URL : " + chemin_acces + "\n Prise de Vue " + priseDeVue + "\n Resolution : " + "Partage : " + partage + "Date Dernière Utilisation : " + dateDerniereUtilisation);
+	}
 
 }
