@@ -1,10 +1,14 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import DAO.ClientDAO;
 import DAO.DAO;
+import DAO.FichierImageDAO;
 import Metier.AdresseClient; 
 import DAO.LesAdressesClientsDAO;
 import Metier.Client;
+import Metier.FichierImage;
 import Metier.LesClients;
 
 
@@ -23,7 +27,7 @@ public class Test {
 		
 		while (inMenu) {
 			//Demande de choix d'action
-			System.out.println("Entrer: \n1-Ce connecter \n2-Créer un nouveau compte \n3-Quitter");
+			System.out.println("Entrer: \n1-Se connecter \n2-Créer un nouveau compte \n3-Quitter");
 			int menu=LectureClavier.lireEntier("Saisisez une des fonctionnalité :");
 			while (menu<1 && menu>3) {
 				menu = LectureClavier.lireEntier("Mauvaise fonctionnalité uniquement de 1 à 3:");
@@ -102,7 +106,7 @@ public class Test {
 		
 		while(Connexion) {
 			System.out.println("Compte Client"+Client.getNom()+" "+Client.getPrenom());
-			System.out.println("1- Modifié mes Adresse de livraison\n2- modifier mes image\n3- Modifié une commande\n4-Ajouté une Commande\n5- Me déconnecté");
+			System.out.println("1- Modifié mes Adresse de livraison\n2- modifier mes images\n3- Modifié une commande\n4-Ajouté une Commande\n5- Me déconnecté");
 			int menu=LectureClavier.lireEntier("Saisisez une des fonctionnalité :");
 			while (menu<1 && menu>4) {
 				menu = LectureClavier.lireEntier("Mauvaise fonctionnalité uniquement de 1 à 4:");
@@ -125,8 +129,36 @@ public class Test {
 					AdresseClient adrC = new AdresseClient(nomR, numR, villeC, codeP);
 					adresseDao.create(adrC);*/
 					break;
-					
-
+				case 2:
+					boolean continuer = true;
+					while(continuer) {
+						System.out.println("Saisissez l'URL de votre image");
+						String url = LectureClavier.lireChaine();
+						System.out.println("Saisissez la prise de vue de votre image");
+						String priseDeVue = LectureClavier.lireChaine();
+						System.out.println("Saisissez le param�tre de retouche de votre image");
+						String parametreRetouche = LectureClavier.lireChaine();
+						System.out.println("Saisissez la r�solution de votre image");
+						String resolution = LectureClavier.lireChaine();
+						System.out.println("Souhaitez vous partager l'image ? (oui/non)");
+						String choix = LectureClavier.lireChaine();
+						boolean partage;
+						while (choix != "oui" && choix != "non") {
+							System.out.println("Erreur : Mot incorrect. Saisir oui ou non");
+							choix = LectureClavier.lireChaine();
+						}
+						if (choix == "oui") {
+							partage = true;
+						} else {
+							partage = false;
+						}
+						Date date = new Date();
+						SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yy");
+						
+						FichierImage fi = new FichierImage(Client.getnoClient(), url, priseDeVue, parametreRetouche, resolution, partage, formater.format(date));
+						FichierImageDAO fiDAO = new FichierImageDAO(TheConnection.getInstance());
+						fiDAO.create(fi);
+					}
 			}
 			Connexion=false;
 		}
