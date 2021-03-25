@@ -13,10 +13,18 @@ public class AlbumDAO extends DAO<Album>{
     
     public boolean create(Album obj) {
         try {
+        	 this.connect.createStatement().executeQuery( 
+     	            "INSERT INTO Tirage"
+     	            + "VALUES("
+     	            + obj.getIdProduit()+","+obj.getIdCommande()+","+obj.getrefTirage()+","+obj.getIdImage()+","+obj.getFormat()+")");
+	        	this.connect.createStatement().executeQuery( 
+			         "INSERT INTO Impression"
+			         + "VALUES("
+			         + obj.getrefTirage()+","+obj.getOrdre()+")");
             this.connect.createStatement().executeQuery( 
-            "INSERT INTO Album"
-            + "VALUES("
-            + obj.getRefTirage()+","+obj.getTitre()+","+obj.getMiseEnPage()+","+obj.getDescriptif()+")");
+		            "INSERT INTO Album"
+		            + "VALUES("
+		            + obj.getRefTirage()+","+obj.getTitre()+","+obj.getMiseEnPage()+","+obj.getDescriptif()+")");
             return true;
         }
 	      catch (SQLException e) {

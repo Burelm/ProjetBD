@@ -13,10 +13,18 @@ public class CalendrierDAO extends DAO<Calendrier>{
     
     public boolean create(Calendrier obj) {
         try {
+        	 this.connect.createStatement().executeQuery( 
+     	            "INSERT INTO Tirage"
+     	            + "VALUES("
+     	            + obj.getIdProduit()+","+obj.getIdCommande()+","+obj.getrefTirage()+","+obj.getIdImage()+","+obj.getFormat()+")");
+        	 this.connect.createStatement().executeQuery( 
+			         "INSERT INTO Impression"
+			         + "VALUES("
+			         + obj.getrefTirage()+","+obj.getOrdre()+")");
             this.connect.createStatement().executeQuery( 
-            "INSERT INTO Calendrier"
-            + "VALUES("
-            + obj.getIdCommande()+","+obj.getIdProduit()+","+obj.getrefTirage()+","+obj.getIdImage()+","+obj.getFormat()+","+obj.getOrdre()+","+obj.getMiseEnPage()+")");
+		            "INSERT INTO Calendrier"
+		            + "VALUES("
+		            + obj.getrefTirage()+","+obj.getMiseEnPage()+")");
             return true;
         }
 	      catch (SQLException e) {

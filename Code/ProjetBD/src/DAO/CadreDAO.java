@@ -13,11 +13,19 @@ public class CadreDAO extends DAO<Cadre>{
     
     public boolean create(Cadre obj) {
         try {
-            this.connect.createStatement().executeQuery( 
-            "INSERT INTO Cadre"
-            + "VALUES("
-            + obj.getrefTirage()+","+obj.getTaille()+","+obj.getModel()+")");
-            return true;
+        	 this.connect.createStatement().executeQuery( 
+     	            "INSERT INTO Tirage"
+     	            + "VALUES("
+     	            + obj.getIdProduit()+","+obj.getIdCommande()+","+obj.getrefTirage()+","+obj.getIdImage()+","+obj.getFormat()+")");
+	         this.connect.createStatement().executeQuery( 
+			         "INSERT INTO Impression"
+			         + "VALUES("
+			         + obj.getrefTirage()+","+obj.getOrdre()+")");
+	         this.connect.createStatement().executeQuery( 
+		            "INSERT INTO Cadre"
+		            + "VALUES("
+		            + obj.getrefTirage()+","+obj.getTaille()+","+obj.getModel()+")");
+	          return true;
         }
 	      catch (SQLException e) {
 		        e.printStackTrace();

@@ -14,10 +14,14 @@ public class ImpressionDAO extends DAO<Impression>{
     
     public boolean create(Impression obj) {
         try {
+        	 this.connect.createStatement().executeQuery( 
+        	            "INSERT INTO Tirage"
+        	            + "VALUES("
+        	            + obj.getIdProduit()+","+obj.getIdCommande()+","+obj.getrefTirage()+","+obj.getIdImage()+","+obj.getFormat()+")");
             this.connect.createStatement().executeQuery( 
             "INSERT INTO Impression"
             + "VALUES("
-            + obj.getIdCommande()+","+obj.getIdProduit()+","+obj.getrefTirage()+","+obj.getIdImage()+","+obj.getFormat()+","+obj.getOrdre()+")");
+            + obj.getrefTirage()+","+obj.getOrdre()+")");
             return true;
         }
 	      catch (SQLException e) {
