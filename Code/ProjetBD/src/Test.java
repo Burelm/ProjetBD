@@ -221,6 +221,7 @@ public class Test {
 							for(int i=0;i<listPhoto.size();i++) {
 								tirageDAO.create(new Tirage(idCommande,idProduit,i,listPhoto.get(i),formatImage.get(i)));
 							}
+							break;
 						case 2://impression
 							idProduit=1;
 							System.out.println("Penser à rentre vos photo dans l'ordre dans lequel elles doivent apparaitre");
@@ -228,6 +229,7 @@ public class Test {
 							for(int i=0;i<listPhoto.size();i++) {
 								impressionDAO.create(new Impression(idCommande,idProduit,i,listPhoto.get(i),formatImage.get(i),i));
 							}
+							break;
 						case 3://cadre
 							idProduit=2;
 							System.out.println("Quel Modèle de cadre ?");
@@ -242,6 +244,7 @@ public class Test {
 								
 								cadreDAO.create(new Cadre(idCommande,idProduit,i,listPhoto.get(i),formatImage.get(i),i,taille,model));
 							}
+							break;
 						case 4://calendrier
 							idProduit=3;
 							
@@ -253,6 +256,7 @@ public class Test {
 								miseEnPage=LectureClavier.lireChaine();
 								calendrierDAO.create(new Calendrier(idCommande,idProduit,i,listPhoto.get(i),formatImage.get(i),i,miseEnPage));
 							}
+							break;
 						case 5://album
 							idProduit=4;
 							System.out.println("Quel titre pour votre album ?");
@@ -269,6 +273,7 @@ public class Test {
 								descriptif=LectureClavier.lireChaine();
 								albumDAO.create(new Album(idCommande,idProduit,i,listPhoto.get(i),formatImage.get(i),i,titre,miseEnPage,descriptif));
 							}
+							break;
 					
 					}
 					break;
