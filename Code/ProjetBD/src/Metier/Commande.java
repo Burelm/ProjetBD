@@ -83,7 +83,7 @@ public class Commande {
 	}
 	public void setPrix(){
 		for(int i=0;i<panier.length();i++){
-			this.prix+=panier.getlistProduit().get(i).getPrix();
+			this.prix+=panier.getListProduit().get(i).getPrix();
 		}
 	}
 	public float getPrix(){
