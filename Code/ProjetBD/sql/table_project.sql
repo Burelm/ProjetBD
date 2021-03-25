@@ -50,7 +50,7 @@ CREATE TABLE LesCommandes(
 	dateCommande DATE, 
 	livraison VARCHAR(10) NOT NULL CHECK (livraison IN('expresse', 'normale', 'rapide')),
 	Promo NUMBER(1),
-	Statut VARCHAR(10) NOT NULL CHECK (Statut IN('encours', 'validé', 'préparé','expédié')),
+	Statut VARCHAR(10) NOT NULL CHECK (Statut IN('encours', 'valide', 'prepare','expedie')),
 	idAdresse NUMBER(7),
 	FOREIGN KEY (noClient) REFERENCES LesClients(noClient),
 	FOREIGN KEY (idAdresse,noClient) REFERENCES LesAdresseClients(idAdresse,noClient)
