@@ -28,6 +28,16 @@ public class LesAdressesClientsDAO extends DAO<ArrayList<AdresseClient>>{
         } catch (SQLException e) { e.printStackTrace(); }
         return lesAdressesClients;
     }
+    public AdresseClient readUneAdresse(int idAdresse) {
+        try {
+            ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM LesAdresseClients WHERE idAdresse = "+ idAdresse);
+            if (result.next()) {
+                return new AdresseClient(result.getString("nomRue"), result.getInt("noRue"),result.getString("Ville"), result.getInt("Code_Postal"));
+            }
+            
+        } catch (SQLException e) { e.printStackTrace(); }
+        return null;
+    }
     
 	@Override
 	public boolean create(ArrayList<AdresseClient> newAddr) {

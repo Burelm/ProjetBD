@@ -8,18 +8,19 @@ public class Commande {
 	private String livraison = ""; //Prénom
 	private Boolean CodePromo = false; //CodePromo
 	private String Statut = ""; //Statut de la commande
-	private int idAdresse=0; //identifiant adresse
+	private AdresseClient adresseClient; //identifiant adresse
 	private float prix=0;
 	private Panier panier = new Panier(); //Liste des produit commandé
 
-	public Commande(int idCommande, int noClient,String date,String livraison,Boolean CodePromo,String Statut,int idAdresse) {
+
+	public Commande(int idCommande,int noClient,String date,String livraison,Boolean CodePromo,String Statut,AdresseClient adresseClient) {
 		this.idCommande=idCommande;
 		this.noClient = noClient;
 		this.date = date;
 		this.livraison = livraison;
 		this.CodePromo=CodePromo;
 		this.Statut=Statut;
-		this.idAdresse=idAdresse;
+		this.adresseClient=adresseClient;
 		setListProduit();
 		setPrix();
 		
@@ -66,12 +67,12 @@ public class Commande {
 		this.CodePromo=CodePromo;
 	}
 	
-	public int getIdAdresse() {
-		return idAdresse;
+	public AdresseClient getIdAdresse() {
+		return adresseClient;
 	}
 
-	public void setIdAdresse(int idAdresse) {
-		this.idAdresse = idAdresse;
+	public void setAdresse(AdresseClient adresseClient) {
+		this.adresseClient = adresseClient;
 	}
 
 	public String getStatut() { 
@@ -98,8 +99,8 @@ public class Commande {
 		return this.panier;
 	}
 
-	public void setCodePromo(int idAdresse) {
-		this.idAdresse=idAdresse;
+	public void setCodePromo(AdresseClient adresseClient) {
+		this.adresseClient=adresseClient;
 	}
 	
 	
