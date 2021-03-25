@@ -35,5 +35,16 @@ public class CodePromoDAO extends DAO<CodePromo>{
         catch (SQLException e) { e.printStackTrace(); }
         return codepromo;  
     }
+	
+    public CodePromo existCode(int noClient) {
+    	  CodePromo codepromo = new CodePromo();      
+        try {
+            ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM CodePromo WHERE noClient ="+noClient);
+            if(result.next()) 
+                codepromo = new CodePromo(code,result.getInt("noClient"));
+            } 
+        catch (SQLException e) { e.printStackTrace(); }
+        return codepromo;  
+    }
     
 }
