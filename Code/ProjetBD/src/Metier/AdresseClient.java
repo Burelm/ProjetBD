@@ -35,4 +35,7 @@ public class AdresseClient {
     public void setCode_postal(int code_postal) {
         this.code_postal = code_postal;
     }
+    public String AfficherAdrr() {
+    	return "Rue: "+getNomRue()+" numero: "+getNumeroRue()+" ville: "+getVille()+" codePostal: "+getCode_postal();
+    }
 }

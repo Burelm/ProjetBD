@@ -1,6 +1,5 @@
 package DAO;
 import java.sql.*;
-import java.util.ArrayList;
 
 import Metier.Client;
 import Metier.LesClients;
@@ -19,6 +18,7 @@ public class ClientDAO extends DAO<LesClients>{
 				LesAdressesClientsDAO addr=new LesAdressesClientsDAO(connect);
 				
 				client = new Client(result.getInt("noClient"),result.getString("nom"),result.getString("prenom"),result.getString("addr_mail"),result.getString("mdp"));
+				//System.out.println (result.getInt("noClient")+result.getString("nom")+result.getString("prenom")+result.getString("addr_mail")+result.getString("mdp"));
 				client.setListAdresse(addr.read(result.getInt("noClient")));
 				
 				listeClient.addClient(client);}
@@ -33,10 +33,11 @@ public class ClientDAO extends DAO<LesClients>{
 		String prenom=client.getClient(0).getPrenom();
 		String mail=client.getClient(0).getMail();
 		String mdp=client.getClient(0).getMdp();
+		//System.out.println("noclient: "+noClient+" "+nom);
 		try {
 			this.connect.createStatement().executeQuery(
 			"INSERT INTO LesClients"
-			+ " VALUES("+noClient+","+"'"+nom+"' ,"+"'"+prenom+"' ,"+"'"+mail+"' ,"+"'"+mdp+"' ,"+0+")");
+			+ " VALUES("+noClient+","+"'"+mail+"' ,"+"'"+nom+"' ,"+"'"+prenom+"' ,"+"'"+mdp+"' ,"+"0"+")");
 			}
 		
 		catch (SQLException e) {
@@ -45,5 +46,9 @@ public class ClientDAO extends DAO<LesClients>{
 			}
 		return true;
 	}
+
+	
+
+	
 	
 }

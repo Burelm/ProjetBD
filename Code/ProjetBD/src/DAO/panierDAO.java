@@ -78,4 +78,11 @@ public class panierDAO extends DAO<Panier> {
 			}
 		
 	}
+
+
+	@Override
+	public boolean create(Panier obj) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

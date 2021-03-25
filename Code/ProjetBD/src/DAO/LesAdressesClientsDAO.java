@@ -22,5 +22,28 @@ public class LesAdressesClientsDAO extends DAO<ArrayList<AdresseClient>>{
         } catch (SQLException e) { e.printStackTrace(); }
         return lesAdressesClients;
     }
+
+	@Override
+	public boolean create(ArrayList<AdresseClient> newClient) {
+		int noClient=0;
+		String nomRue="";
+		int noRue=0;
+		String ville="";
+		int codePostale=0;
+		
+		try {
+			
+			this.connect.createStatement().executeQuery(
+			"INSERT INTO LesAdresseClients (noClient, nomRue, noRue, Ville, Code_Postal)"
+			+ " VALUES("+noClient+" ,"+"'"+nomRue+"' ,"+noRue+","+"'"+ville+"' ,"+codePostale+")");
+			}
+		
+		catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+			}
+		return true;
+		
+	}
    
 }
