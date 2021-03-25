@@ -48,10 +48,10 @@ INSERT INTO FichierImage VALUES (6,'/user/md/image/funtogether.png',2,'Plan d en
 
 
 INSERT INTO LesCommandes VALUES (1,1,TO_DATE('23/03/21','DD/MM/YYYY'),'expresse',1,'encours',1);
-INSERT INTO LesCommandes VALUES (2,1,TO_DATE('20/03/21','DD/MM/YYYY'),'normale',0,'expédié',2);
+INSERT INTO LesCommandes VALUES (2,1,TO_DATE('20/03/21','DD/MM/YYYY'),'normale',0,'expedie',2);
 INSERT INTO LesCommandes VALUES (3,2,TO_DATE('22/03/21','DD/MM/YYYY'),'normale',1,'encours',3);   
-INSERT INTO LesCommandes VALUES (4,2,TO_DATE('22/03/21','DD/MM/YYYY'),'normale',1,'validé',3);
-INSERT INTO LesCommandes VALUES (5,2,TO_DATE('22/03/21','DD/MM/YYYY'),'rapide',0,'préparé',3);
+INSERT INTO LesCommandes VALUES (4,2,TO_DATE('22/03/21','DD/MM/YYYY'),'normale',1,'valide',3);
+INSERT INTO LesCommandes VALUES (5,2,TO_DATE('22/03/21','DD/MM/YYYY'),'rapide',0,'prepare',3);
 
 
 INSERT INTO Panier VALUES (1,1);
