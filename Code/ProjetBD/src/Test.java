@@ -105,29 +105,34 @@ public class Test {
 		}
 		
 		while(Connexion) {
+			Connexion=true;
 			System.out.println("Compte Client"+Client.getNom()+" "+Client.getPrenom());
-			System.out.println("1- ModifiÃ© mes Adresse de livraison\n2- modifier mes images\n3- ModifiÃ© une commande\n4-AjoutÃ© une Commande\n5- Me dÃ©connectÃ©");
-			int menu=LectureClavier.lireEntier("Saisisez une des fonctionnalitÃ© :");
+			System.out.println("1- Ajouté une Adresse de livraison\n 2- modifier mes image\n3- Modifié une commande\n4-Ajouté une Commande\n5- Me déconnecté");
+			int menu=LectureClavier.lireEntier("Saisisez une des fonctionnalité :");
 			while (menu<1 && menu>4) {
-				menu = LectureClavier.lireEntier("Mauvaise fonctionnalitÃ© uniquement de 1 Ã  4:");
+				menu = LectureClavier.lireEntier("Mauvaise fonctionnalité uniquement de 1 à 4:");
 			}
 
 			switch(menu){
 				case 1:
-					/*System.out.println("Saisissez votre numero de rue:");
-					int numR=LectureClavier.lireEntier();
+					System.out.println("Saisissez votre numero de rue:");
+					int numR=LectureClavier.lireEntier("");
 
 					System.out.println("Saisissez votre nom de rue:");
 					String nomR=LectureClavier.lireChaine();
 
 					System.out.println("Saisissez votre code postal:");
-					int codeP=LectureClavier.lireEntier();
+					int codeP=LectureClavier.lireEntier("");
 
 					System.out.println("Saisissez votre ville:");
 					String villeC=LectureClavier.lireChaine();
 
 					AdresseClient adrC = new AdresseClient(nomR, numR, villeC, codeP);
-					adresseDao.create(adrC);*/
+					ArrayList<AdresseClient> newadress= new ArrayList<AdresseClient>();
+					newadress.add(adrC);
+					DAO<ArrayList<AdresseClient>> ajoutAdresseDao = new LesAdressesClientsDAO(TheConnection.getInstance(),Client.getnoClient());
+					ajoutAdresseDao.create(newadress);
+					Client.addAdresse(adrC);
 					break;
 				case 2:
 					boolean continuer = true;
