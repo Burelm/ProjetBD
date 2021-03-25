@@ -41,7 +41,7 @@ public class CodePromoDAO extends DAO<CodePromo>{
         try {
             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM CodePromo WHERE noClient ="+noClient);
             if(result.next()) 
-                codepromo = new CodePromo(code,result.getInt("noClient"));
+                codepromo = new CodePromo(result.getInt("codePromo"),noClient);
             } 
         catch (SQLException e) { e.printStackTrace(); }
         return codepromo;  
