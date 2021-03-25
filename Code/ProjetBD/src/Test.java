@@ -6,7 +6,9 @@ import Metier.Album;
 import Metier.Cadre;
 import Metier.Calendrier;
 import DAO.LesAdressesClientsDAO;
+import DAO.ProduitDAO;
 import DAO.CadreDAO;
+import DAO.CalendrierDAO;
 import DAO.TirageDAO;
 import DAO.AlbumDAO;
 import DAO.ImpressionDAO;
@@ -14,13 +16,18 @@ import Metier.Impression;
 import Metier.Tirage;
 import DAO.CadreDAO;
 import DAO.ClientDAO;
+import DAO.CodePromoDAO;
+import DAO.CommandeDAO;
 import DAO.DAO;
 import DAO.FichierImageDAO;
 import Metier.AdresseClient; 
 import DAO.LesAdressesClientsDAO;
 import Metier.Client;
+import Metier.CodePromo;
+import Metier.Commande;
 import Metier.FichierImage;
 import Metier.LesClients;
+import Metier.Produit;
 
 
 public class Test { 
@@ -160,9 +167,9 @@ public class Test {
                         String url = LectureClavier.lireChaine();
                         System.out.println("Saisissez la prise de vue de votre image");
                         String priseDeVue = LectureClavier.lireChaine();
-                        System.out.println("Saisissez le paramètre de retouche de votre image");
+                        System.out.println("Saisissez le paramï¿½tre de retouche de votre image");
                         String parametreRetouche = LectureClavier.lireChaine();
-                        System.out.println("Saisissez la résolution de votre image");
+                        System.out.println("Saisissez la rï¿½solution de votre image");
                         String resolution = LectureClavier.lireChaine();
                         System.out.println("Souhaitez vous partager l'image ? (oui/non)");
                         String choix = LectureClavier.lireChaine();
@@ -268,7 +275,7 @@ public class Test {
 					}
 			}
 			Connexion=false;
-		}
+		
 		
 		System.out.println("Au revoir !!!");
 		/*
