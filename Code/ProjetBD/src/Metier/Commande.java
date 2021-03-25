@@ -11,9 +11,11 @@ public class Commande {
 	private int idAdresse=0; //identifiant adresse
 	private float prix=0;
 	private Panier panier = new Panier(); //Liste des produit commandé
+	private static idmax = 1;
 
-	public Commande(int idCommande, int noClient,String date,String livraison,Boolean CodePromo,String Statut,int idAdresse) {
-		this.idCommande=idCommande;	
+	public Commande(int noClient,String date,String livraison,Boolean CodePromo,String Statut,int idAdresse) {
+		this.idCommande=idmax;
+		idmax++;
 		this.noClient = noClient;
 		this.date = date;
 		this.livraison = livraison;
