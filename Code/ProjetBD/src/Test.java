@@ -6,7 +6,9 @@ import Metier.Album;
 import Metier.Cadre;
 import Metier.Calendrier;
 import DAO.LesAdressesClientsDAO;
+import DAO.ProduitDAO;
 import DAO.CadreDAO;
+import DAO.CalendrierDAO;
 import DAO.TirageDAO;
 import DAO.AlbumDAO;
 import DAO.ImpressionDAO;
@@ -14,13 +16,18 @@ import Metier.Impression;
 import Metier.Tirage;
 import DAO.CadreDAO;
 import DAO.ClientDAO;
+import DAO.CodePromoDAO;
+import DAO.CommandeDAO;
 import DAO.DAO;
 import DAO.FichierImageDAO;
 import Metier.AdresseClient; 
 import DAO.LesAdressesClientsDAO;
 import Metier.Client;
+import Metier.CodePromo;
+import Metier.Commande;
 import Metier.FichierImage;
 import Metier.LesClients;
+import Metier.Produit;
 
 
 public class Test { 
