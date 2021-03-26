@@ -332,7 +332,10 @@ public class Test {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-					}
+				case 7://déconnexion
+					Connexion=false;
+					break;
+				}
 			}
 			Connexion=false;
 		
