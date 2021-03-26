@@ -135,7 +135,7 @@ public class Test {
 		while(Connexion) {
 			Connexion=true;
 			System.out.println("Compte Client"+Client.getNom()+" "+Client.getPrenom());
-			System.out.println("1- Ajouter une Adresse de livraison\n 2- Ajouter des images\n3- Cr�er un tirage\n5-Consulter des informations\n6- Supprimer une image\n7- Se deconnecter");
+			System.out.println("1- Ajouter une Adresse de livraison\n 2- Ajouter des images\n3- Créer un tirage\n5-Consulter des informations\n6- Supprimer une image\n7- Se deconnecter");
 			int menu=LectureClavier.lireEntier("Saisisez une des fonctionnalites :");
 			while (menu<1 && menu>7) {
 				menu = LectureClavier.lireEntier("Mauvaise fonctionnalite uniquement de 1 a 7:");
@@ -214,7 +214,7 @@ public class Test {
 					ArrayList<FichierImage> photoDispo= FimageDAO.readAll(Client.getnoClient());
 					ArrayList<Integer> listPhoto = new ArrayList<Integer>();
 					ArrayList<String> formatImage=new ArrayList<String>();
-					int idCommande=0;//ici requÃƒÂªte de Tariq
+					int idCommande=0;//ici requÃÆÃÂªte de Tariq
 					String miseEnPage;
 					switch(typeProduit) {
 						case 1://tirage
@@ -289,7 +289,7 @@ public class Test {
 						CommandeDAO commandeDAO = new CommandeDAO(TheConnection.getInstance());
 						for (Commande commande: commandeDAO.readAll(Client.getnoClient())) {
 							System.out.println(commande.getidCommande());
-							idCommandes.add(commande.getidCommande());//Peut être qu'il manque un CAST
+							idCommandes.add(commande.getidCommande());//Peut Ãªtre qu'il manque un CAST
 						}
 						int idCommandeConsult = LectureClavier.lireEntier("Saisir la commande a consulter");
 						//TODO Controle de saisie
@@ -300,14 +300,12 @@ public class Test {
 						//TODO Afficher les codes promos
 						break;
 					case 3:
-						System.out.println("Fonctionnalité pas encore implementee");
+						System.out.println("FonctionnalitÃ© pas encore implementee");
 						break;
 					case 4:
-						ArrayList<FichierImage> lesFichiersImage = FimageDAO.readAll(Client.getnoClient());
+						ArrayList<FichierImage> lesFichiersImage = FimageDAO.readImageAutoriser(Client.getnoClient());
 						for(FichierImage fi : lesFichiersImage) {
-							if(fi.isPartage()) {
 								fi.afficher();
-							}
 						}
 					}
 					
@@ -334,11 +332,7 @@ public class Test {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-					
-			case 7://deconnexion
-				Connexion=false;
-				break;
-				}
+					}
 			}
 			Connexion=false;
 		

@@ -24,13 +24,13 @@ public class FichierImageDAO extends DAO<FichierImage>{
 			if (result.next()) {
 			  id=result.getInt("ID");
 			  id=id+1;
-			  System.out.println("id apres "+id);
+			 
 			}
 		} else {
 			id = obj.getIdImage();
 		}
 		int myInt = obj.isPartage() ? 1 : 0;
-		System.out.println(obj.getDateDerniereUtilisation());
+		
 		this.connect.createStatement().executeQuery(
 		"INSERT INTO FichierImage "
 		+ "VALUES("
