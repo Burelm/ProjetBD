@@ -135,7 +135,7 @@ public class Test {
 		while(Connexion) {
 			Connexion=true;
 			System.out.println("Compte Client"+Client.getNom()+" "+Client.getPrenom());
-			System.out.println("1- Ajouter une Adresse de livraison\n 2- Ajouter des images\n3- Créer un tirage\n5-Consulter des informations\n6- Supprimer une image\n7- Se deconnecter");
+			System.out.println("1- Ajouter une Adresse de livraison\n 2- Ajouter des images\n3- Crï¿½er un tirage\n5-Consulter des informations\n6- Supprimer une image\n7- Se deconnecter");
 			int menu=LectureClavier.lireEntier("Saisisez une des fonctionnalites :");
 			while (menu<1 && menu>7) {
 				menu = LectureClavier.lireEntier("Mauvaise fonctionnalite uniquement de 1 a 7:");
@@ -334,7 +334,11 @@ public class Test {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-					}
+					
+			case 7://deconnexion
+				Connexion=false;
+				break;
+				}
 			}
 			Connexion=false;
 		
