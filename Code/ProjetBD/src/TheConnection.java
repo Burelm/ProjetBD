@@ -1,11 +1,10 @@
-
 import java.sql.*;
 
 public class TheConnection{
 	
 	private String url = "jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:im2ag";
-	private String user = "mahit";
-	private String passwd = "";
+	private String user = "hebertco";
+	private String passwd = "fmaarg1Ox";
 	private static Connection connect;
 	private TheConnection(){
 		try { 
@@ -20,5 +19,15 @@ public class TheConnection{
 	}
 	else { System.out.println("CONNEXION SQL EXISTANTE ! "); }
 		return connect;
+	}
+	public static void stopConnection() {
+		// TODO Auto-generated method stub
+		try {
+			connect.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
