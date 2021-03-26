@@ -47,13 +47,15 @@ public class FichierImageDAO extends DAO<FichierImage>{
     public FichierImage read(int idImage) {    
         try {
             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM FichierImage WHERE idImage ="+idImage);
-            if(result.next()) 
-                return new FichierImage(idImage,result.getInt("noClient"),result.getString("chemin_access"),result.getString("Resolution"),result.getString("paramRetouche"),result.getString("PriseDeVue"),result.getBoolean("Partage"),result.getString("dateDerniereUtilisation"));
+            if(result.next()) {
+            	boolean partage = (result.getInt("Partage")==1) ? true : false;
+                return new FichierImage(idImage,result.getInt("noClient"),result.getString("chemin_access"),result.getString("Resolution"),result.getString("paramRetouche"),result.getString("PriseDeVue"),partage,result.getString("dateDerniereUtilisation"));
+            }
             } catch (SQLException e) { e.printStackTrace(); }
         return null;  
     }
     
-     //Toute les Images du clients
+    //Toute les Images du clients
     public ArrayList<FichierImage> readAll(int idClient) {
     	ArrayList<FichierImage> lesFichiersImage = new ArrayList<FichierImage>();
     	try {
@@ -70,15 +72,17 @@ public class FichierImageDAO extends DAO<FichierImage>{
     public ArrayList<FichierImage> readImageAutoriser(int idClient) {
     	ArrayList<FichierImage> lesFichiersImage = new ArrayList<FichierImage>();
     	try {
-            ResultSet result = this.connect.createStatement().executeQuery("Select idImage,chemin_access,noClient,PriseDeVue,paramRetouche,Resolution,partage,DateUtilisation "
+            ResultSet result = this.connect.createStatement().executeQuery("Select idImage,chemin_access,noClient,PriseDeVue,paramRetouche,Resolution,Partage,DateUtilisation "
             		+"from FichierImage" + 
-            		" where (Select count(partage)" + 
+            		" where (Select count(Partage)" + 
             		" From FichierImage" + 
-            		" where partage=1 and noClient="+idClient+
-            		" group by partage)>0 and partage=1");
+            		" where Partage=1 and noClient="+idClient+
+            		" group by Partage)>0 and Partage=1");
+           
             while (result.next()) {
+            	
             	boolean partage = (result.getInt("Partage")==1) ? true : false;
-                lesFichiersImage.add(new FichierImage(result.getInt("idImage"),result.getInt("noClient"),result.getString("chemin_access"),result.getString("Resolution"),result.getString("paramRetouche"),result.getString("PriseDeVue"),partage,result.getString("dateDerniereUtilisation"))) ;
+                lesFichiersImage.add(new FichierImage(result.getInt("idImage"),result.getInt("noClient"),result.getString("chemin_access"),result.getString("Resolution"),result.getString("paramRetouche"),result.getString("PriseDeVue"),partage,result.getString("DateUtilisation"))) ;
             }
             } catch (SQLException e) { e.printStackTrace(); }
         return lesFichiersImage;  
