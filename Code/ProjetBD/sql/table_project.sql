@@ -6,6 +6,7 @@ Drop Table Tirage;
 Drop Table Produit;
 Drop Table CodePromo;
 Drop Table Panier;
+Drop Table Facture;
 Drop Table LesCommandes;
 Drop Table FichierImage;
 Drop Table LesAdresseClients;
@@ -55,6 +56,13 @@ CREATE TABLE LesCommandes(
 	FOREIGN KEY (noClient) REFERENCES LesClients(noClient),
 	FOREIGN KEY (idAdresse,noClient) REFERENCES LesAdresseClients(idAdresse,noClient)
 );
+
+CREATE TABLE Facture(
+  idFacture NUMBER PRIMARY KEY,
+  dateCommande DATE,
+  price FLOAT,
+  FOREIGN KEY (idFacture) REFERENCES LesCommandes(idCommande)
+  );
 
 CREATE TABLE Panier(
     idCommande NUMBER(7),
@@ -113,3 +121,4 @@ CREATE TABLE Album(
   Descriptif VARCHAR(100),
   FOREIGN KEY (RefTirage) REFERENCES Tirage(RefTirage)
 );
+
