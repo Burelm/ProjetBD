@@ -81,7 +81,7 @@ public class Client {
 	public void afficher() {
 		System.out.println("Client no : " + noClient + "\n Prénom : " + prenom + "\n Nom : " + nom + "\n Mail : " + mail + ":\n Adresse(s) : ");
 		for(AdresseClient adresseClient : listAdresse) {
-			adresseClient.AfficherAdrr();
+			System.out.println(adresseClient.AfficherAdrr());
 		}
 	}
 }
