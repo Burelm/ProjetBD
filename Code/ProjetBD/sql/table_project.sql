@@ -23,7 +23,7 @@ CREATE TABLE LesClients(
 );
 
 CREATE TABLE LesAdresseClients(
-    idAdresse NUMBER(7) AUTO_INCREMENT,
+    idAdresse NUMBER(7),
     noClient NUMBER(7),
     nomRue VARCHAR(50),
     noRue NUMBER(3),
