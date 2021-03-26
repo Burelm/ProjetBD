@@ -20,7 +20,7 @@ public class CommandeDAO extends DAO<Commande>{
 			LesAdressesClientsDAO lesAdressesClientsDAO = new LesAdressesClientsDAO(connect);
 			ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM LesCommandes WHERE idCommande ="+idCommande);
 			if(result.next()) 
-                return new Commande(idCommande,result.getInt("noClient"),result.getString("date"),result.getString("livraison"),result.getBoolean("CodePromo"),result.getString("Statut"),lesAdressesClientsDAO.readUneAdresse(result.getInt("idAdresse")));
+                return new Commande(idCommande,result.getInt("noClient"),result.getString("dateCommande"),result.getString("livraison"),result.getBoolean("Promo"),result.getString("Statut"),lesAdressesClientsDAO.readUneAdresse(result.getInt("idAdresse")));
 		} catch (SQLException e) {
 				e.printStackTrace();
 				return null;
@@ -33,9 +33,11 @@ public class CommandeDAO extends DAO<Commande>{
 		ArrayList<Commande> lesCommandes = new ArrayList<Commande>();
 		try {
 			LesAdressesClientsDAO lesAdressesClientsDAO = new LesAdressesClientsDAO(connect);
+			panierDAO panierDAO = new panierDAO(connect);
 			ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM LesCommandes WHERE noClient ="+noClient);
-			while (result.next()) 
-                lesCommandes.add(new Commande(result.getInt("idCommande"),result.getInt("noClient"),result.getString("date"),result.getString("livraison"),result.getBoolean("CodePromo"),result.getString("Statut"),lesAdressesClientsDAO.readUneAdresse(result.getInt("idAdresse"))));
+			while (result.next()) {
+                lesCommandes.add(new Commande(result.getInt("idCommande"),result.getInt("noClient"),result.getString("dateCommande"),result.getString("livraison"),result.getBoolean("Promo"),result.getString("Statut"),lesAdressesClientsDAO.readUneAdresse(result.getInt("idAdresse")), panierDAO.read(result.getInt("idCommande"))));
+			}
 		} catch (SQLException e) {
 				e.printStackTrace();
 				return null;

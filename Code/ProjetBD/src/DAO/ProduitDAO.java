@@ -32,7 +32,7 @@ public class ProduitDAO extends DAO<Produit>{
         try {
             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM Produit WHERE idProduit ="+idProduit);
             if(result.next()) {
-            	return new Produit(idProduit,TypeI.valueOf(result.getString("typeImpr")),TypeQ.valueOf(result.getString("Qualité")),result.getFloat("Prix"),result.getString("Description"));
+            	return new Produit(idProduit, TypeI.valueOf(result.getString("typeImpr")),TypeQ.valueOf(result.getString("Qualite")),result.getFloat("Prix"),result.getString("Description"));
             }
         } catch (SQLException e) { e.printStackTrace(); }
         return null;
@@ -42,9 +42,10 @@ public class ProduitDAO extends DAO<Produit>{
     	try {
             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM Produit");
             while (result.next()) 
-                lesProduits.add(new Produit(result.getInt("idProduit"),TypeI.valueOf(result.getString("typeImpr")),TypeQ.valueOf(result.getString("Qualité")),result.getFloat("Prix"),result.getString("Description")));
+                lesProduits.add(new Produit(result.getInt("idProduit"),TypeI.valueOf(result.getString("typeImpr")),TypeQ.valueOf(result.getString("Qualite")),result.getFloat("Prix"),result.getString("Description")));
             } catch (SQLException e) { e.printStackTrace(); }
         return lesProduits;  
     }
+
     
 }

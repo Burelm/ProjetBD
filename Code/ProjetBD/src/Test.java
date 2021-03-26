@@ -287,20 +287,24 @@ public class Test {
 					case 1:
 						ArrayList<Integer> idCommandes = new ArrayList<Integer>();
 						CommandeDAO commandeDAO = new CommandeDAO(TheConnection.getInstance());
-						for (Commande commande: commandeDAO.readAll(Client.getnoClient())) {
-							System.out.println(commande.getidCommande());
+						int i = 0;
+						ArrayList<Commande> lesCommandes = commandeDAO.readAll(Client.getnoClient());
+						for (Commande commande: lesCommandes) {
+							System.out.print("Commande numero :" + commande.getidCommande() + " | ");
+							System.out.println("Index : " + i);
 							idCommandes.add(commande.getidCommande());//Peut Ãªtre qu'il manque un CAST
+							i++;
 						}
-						int idCommandeConsult = LectureClavier.lireEntier("Saisir la commande a consulter");
+						int idCommandeConsult = LectureClavier.lireEntier("Saisir l'index de la commande a consulter");
 						//TODO Controle de saisie
-						commandeDAO.read(idCommandeConsult).afficher();
+						lesCommandes.get(idCommandeConsult).afficher();
 						break;
 					case 2:
 						Client.afficher();
 						//TODO Afficher les codes promos
 						break;
 					case 3:
-						System.out.println("FonctionnalitÃ© pas encore implementee");
+						System.out.println("Fonctionnalite pas encore implementee");
 						break;
 					case 4:
 						ArrayList<FichierImage> lesFichiersImage = FimageDAO.readImageAutoriser(Client.getnoClient());

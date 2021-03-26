@@ -25,6 +25,19 @@ public class Commande {
 		setPrix();
 		
 	}
+	public Commande(int idCommande,int noClient,String date,String livraison,Boolean CodePromo,String Statut,AdresseClient adresseClient, Panier panier) {
+		this.idCommande=idCommande;
+		this.noClient = noClient;
+		this.date = date;
+		this.livraison = livraison;
+		this.CodePromo=CodePromo;
+		this.Statut=Statut;
+		this.adresseClient=adresseClient;
+		this.panier = panier;
+		setListProduit();
+		setPrix();
+		
+	}
 
 	public Commande(){
 	}
