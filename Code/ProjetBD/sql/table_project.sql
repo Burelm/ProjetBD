@@ -91,8 +91,7 @@ CREATE TABLE Tirage(
     idImage NUMBER(7),
     formatImg VARCHAR(100), --format prédéfinie ?
     FOREIGN KEY (idCommande) REFERENCES LesCommandes(idCommande),
-    FOREIGN KEY (idProduit) REFERENCES Produit(idProduit),
-    FOREIGN KEY (idImage) REFERENCES Produit(idProduit)
+    FOREIGN KEY (idProduit) REFERENCES Produit(idProduit)
 );
 
 CREATE TABLE Impression(
