@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Code/ProjetBD/src"/>
+	<classpathentry kind="src" path="ressource"/>
+	<classpathentry kind="lib" path="Code/ProjetBD/ojdbc8.jar"/>
+	<classpathentry kind="output" path="Code/ProjetBD/bin"/>
+</classpath>

@@ -12,11 +12,25 @@ public class TirageDAO extends DAO<Tirage>{
     }
     
     public boolean create(Tirage obj) {
+    	int id=obj.getrefTirage();
+    	
         try {
+        	if (id == -1) {
+    			ResultSet result = this.connect.createStatement().executeQuery("SELECT max(RefTirage) AS ID FROM Tirage");
+    		    id=1;
+    			if (result.next()) {
+    			  id=result.getInt("ID");
+    			  id=id+1;
+    			}
+    		} else {
+    			id = obj.getrefTirage();
+    		}
+        	System.out.println("id2 "+id);
             this.connect.createStatement().executeQuery( 
             "INSERT INTO Tirage"
-            + "VALUES("
-            + obj.getIdCommande()+","+obj.getIdProduit()+","+obj.getrefTirage()+","+obj.getIdImage()+","+obj.getFormat()+")");
+            + " VALUES("
+            +obj.getIdProduit()+","+obj.getIdCommande()+","+id+","+obj.getIdImage()+",'"+obj.getFormat()+"')");
+            
             return true;
         }
 	      catch (SQLException e) {

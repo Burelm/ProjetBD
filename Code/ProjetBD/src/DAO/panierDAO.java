@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import Metier.Panier;
+import Metier.Produit;
 
 
 public class panierDAO extends DAO<Panier> {
@@ -14,21 +15,13 @@ public class panierDAO extends DAO<Panier> {
 	
 	
 	public boolean create(int idCommande,Panier obj) {
-		try {
-			
-			
-			
-			 PreparedStatement prepStmt = connect.prepareStatement(    
-					    "insert into PANIER(idCommande,idProduit) values (?,?)");
-			 connect.setAutoCommit(false);
-
-			 for(int i=0;i<obj.getListProduit().size();i++) {
-				 prepStmt.setInt(1, obj.getListProduit().get(i).getID());
-				 prepStmt.setInt(2, idCommande);
-				 prepStmt.addBatch();
-			 }
-			 prepStmt.executeBatch();
-			 connect.commit();
+		try {		
+			for (Produit prod : obj.getListProduit()) {
+                this.connect.createStatement().executeQuery(
+                        "INSERT INTO Panier"
+                        + " VALUES("
+                        + idCommande+","+prod.getID() +")");
+            }
 			 return true;
 			}
 		

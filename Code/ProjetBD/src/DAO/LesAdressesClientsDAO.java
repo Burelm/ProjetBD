@@ -22,7 +22,7 @@ public class LesAdressesClientsDAO extends DAO<ArrayList<AdresseClient>>{
         try {
             ResultSet result = this.connect.createStatement().executeQuery("SELECT * FROM LesAdresseClients WHERE noClient = "+ id);
             while (result.next()) {
-                lesAdressesClients.add(new AdresseClient(result.getString("nomRue"), result.getInt("noRue"),result.getString("Ville"), result.getInt("Code_Postal")));
+                lesAdressesClients.add(new AdresseClient(result.getInt("idAdresse"),result.getString("nomRue"), result.getInt("noRue"),result.getString("Ville"), result.getInt("Code_Postal")));
             }
             
         } catch (SQLException e) { e.printStackTrace(); }

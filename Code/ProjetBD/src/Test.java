@@ -12,6 +12,7 @@ import DAO.ProduitDAO;
 import DAO.CadreDAO;
 import DAO.CalendrierDAO;
 import DAO.TirageDAO;
+import DAO.panierDAO;
 import DAO.AlbumDAO;
 import DAO.ImpressionDAO;
 import Metier.Impression;
@@ -29,6 +30,7 @@ import Metier.CodePromo;
 import Metier.Commande;
 import Metier.FichierImage;
 import Metier.LesClients;
+import Metier.Panier;
 import Metier.Produit;
 
 
@@ -134,7 +136,7 @@ public class Test {
 		
 		while(Connexion) {
 			Connexion=true;
-			System.out.println("Compte Client"+Client.getNom()+" "+Client.getPrenom());
+			System.out.println("Compte Client "+Client.getNom()+" "+Client.getPrenom());
 			System.out.println("1- Ajouter une Adresse de livraison\n 2- Ajouter des images\n3- Créer un tirage\n5-Consulter des informations\n6- Supprimer une image\n7- Se deconnecter");
 			int menu=LectureClavier.lireEntier("Saisisez une des fonctionnalites :");
 			while (menu<1 && menu>7) {
@@ -211,18 +213,49 @@ public class Test {
 					int idProduit;
 					int typeProduit=LectureClavier.lireEntier("Vous souhaitez creer un produit, veuillez choisir son type ci dessous:\n 1:Tirage\n 2:Impression\n 3:Cadre\n 4:Album\n 5:Calendrier\n");
 					int nbrPhoto=LectureClavier.lireEntier("Combien voulez vous de photos dans votre tirage ?");
-					ArrayList<FichierImage> photoDispo= FimageDAO.readAll(Client.getnoClient());
+					ArrayList<FichierImage> photoDispo= FimageDAO.readImageAutoriser(Client.getnoClient());
 					ArrayList<Integer> listPhoto = new ArrayList<Integer>();
 					ArrayList<String> formatImage=new ArrayList<String>();
-					int idCommande=0;//ici requÃÆÃÂªte de Tariq
+					int idCommande=-1;
 					String miseEnPage;
 					switch(typeProduit) {
 						case 1://tirage
 							idProduit=0;
-							Choix(photoDispo,listPhoto,formatImage,nbrPhoto);
+							Long millis = System.currentTimeMillis();
+	                        Date date = new Date(millis);
+	                        SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
+	                        String etat="encours";
+	                        System.out.println("quelle mode de livraison ('expresse'/'normale'/'rapide')");
+	                        String choix = LectureClavier.lireChaine();
+	                        while (!choix.equals("expresse") && !choix.equals("normale") && !choix.equals("rapide")) {
+	                            System.out.println("Erreur : Mot incorrect. Saisir 'expresse' ou 'normale' ou'rapide'");
+	                            choix = LectureClavier.lireChaine();
+	                        }
+	                        
+	                        System.out.println("choisir une des id-adress pour l'Adresse de livraison :");
+	                        ArrayList<AdresseClient> adrr= adresseDao.read(Client.getnoClient());
+	                        for(int i=0; i<adrr.size();i++) {
+	                        	System.out.println(adrr.get(i).AfficherAdrr2());
+	                        }
+	                        int idaddr=LectureClavier.lireEntier("Quelles id ?");
+							Commande cmd= new Commande(idCommande,Client.getnoClient(),formater.format(date),choix,false,etat,idaddr);
+							commandeDao.create(cmd);
+							
+							listPhoto=Choix(photoDispo,nbrPhoto);
+							System.out.println("quelle dimension souhaitez vous pour ce tirage ? (exemple: 400*400)");
+							String dim = LectureClavier.lireChaine();
+							boolean create=false;
+							Panier panier=new Panier();
 							for(int i=0;i<listPhoto.size();i++) {
-								tirageDAO.create(new Tirage(idCommande,idProduit,i,listPhoto.get(i),formatImage.get(i)));
+								create = tirageDAO.create(new Tirage(cmd.getidCommande(),1,-1,listPhoto.get(i),dim));
+								panier.addToListProduit(produitDao.read(1));
 							}
+							cmd.setPanier(panier);
+							panierDAO panierDao=new panierDAO(TheConnection.getInstance());
+							panierDao.create(cmd.getidCommande(),cmd.getPanier());
+							if(create)
+								System.out.println("Commande effectu� !"+"numero:"+cmd.getidCommande());
+								
 							break;
 						case 2://impression
 							idProduit=1;
@@ -316,26 +349,23 @@ public class Test {
 					break;
 				case 6://Supprime image
 					System.out.println("liste de mes photos");
-					FichierImageDAO fiDAO = new FichierImageDAO(TheConnection.getInstance());
-					ArrayList<FichierImage> mesphoto=fiDAO.readAll(Client.getnoClient());
+					//FichierImageDAO fiDAO = new FichierImageDAO(TheConnection.getInstance());
+					ArrayList<FichierImage> mesphoto=FimageDAO.readAll(Client.getnoClient());
 					for(int i=0;i<mesphoto.size();i++) {
 						System.out.println(mesphoto.get(i).afficherImage());
 					}
 					int idImage=LectureClavier.lireEntier("l'id de l'image en question");
-					DAO<FichierImage> fichierimgdao= new FichierImageDAO(TheConnection.getInstance());
-					FichierImage todelete = fichierimgdao.read(idImage);
 					String queryedquery = "{CALL imageSuppr(" + idImage + "," + Client.getnoClient() + ")}";
-				CallableStatement request;
-				try {
-					request = TheConnection.getInstance().prepareCall(queryedquery);
-					todelete = fichierimgdao.read(idImage);
-					System.out.println(todelete);
-					System.out.println("Le fichier image n'as pas ete suprime");
-					request.execute();
-					request.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+					CallableStatement request;
+					try {
+						request = TheConnection.getInstance().prepareCall(queryedquery);
+						request.execute();
+						request.close();
+						System.out.println("image Supprim� !");
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					break;
 				case 7://déconnexion
 					Connexion=false;
 					break;
@@ -343,7 +373,7 @@ public class Test {
 			}
 			Connexion=false;
 		
-		
+		TheConnection.stopConnection();
 		System.out.println("Au revoir !!!");
 		/*
 		System.out.println (listeClients.getClient(0).getNom()+ " "+listeClients.getClient(0).getMail()+"--"+listeClients.getClient(0).getMdp());
@@ -370,4 +400,17 @@ public class Test {
 			}
 		}
 	}
+	
+	public static  ArrayList<Integer>  Choix(ArrayList<FichierImage> photoDispo, int nbrPhotoVoulu) {
+        ArrayList<Integer> ListIdPhoto=new ArrayList<Integer>() ;
+        for(int j=0;j<photoDispo.size();j++) {
+            System.out.println (photoDispo.get(j).afficherImage());
+        }
+            while(ListIdPhoto.size()<nbrPhotoVoulu) {
+                int idchoix=LectureClavier.lireEntier("Quelle photo voulez vous ? (id de l'image)\n");
+                ListIdPhoto.add(idchoix);    
+            }
+        return ListIdPhoto;
+	}
 }
+

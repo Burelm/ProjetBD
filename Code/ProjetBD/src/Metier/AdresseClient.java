@@ -1,11 +1,20 @@
 package Metier;
 
 public class AdresseClient {
+	int id;
     String nomRue;
     int numeroRue;
     String ville;
     int code_postal;
     public AdresseClient(String nomRue, int numeroRue, String ville, int code_postal) {
+        this.nomRue = nomRue;
+        this.numeroRue = numeroRue;
+        this.ville = ville;
+        this.code_postal = code_postal;
+    }
+    
+    public AdresseClient(int id,String nomRue, int numeroRue, String ville, int code_postal) {
+    	this.id=id;
         this.nomRue = nomRue;
         this.numeroRue = numeroRue;
         this.ville = ville;
@@ -37,5 +46,8 @@ public class AdresseClient {
     }
     public String AfficherAdrr() {
     	return "Rue: "+getNomRue()+" numero: "+getNumeroRue()+" ville: "+getVille()+" codePostal: "+getCode_postal();
+    }
+    public String AfficherAdrr2() {
+    	return "id-adresse: "+id+"Rue: "+getNomRue()+" numero: "+getNumeroRue()+" ville: "+getVille()+" codePostal: "+getCode_postal();
     }
 }

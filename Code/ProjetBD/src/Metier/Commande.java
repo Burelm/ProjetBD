@@ -8,12 +8,12 @@ public class Commande {
 	private String livraison = ""; //PrÃ©nom
 	private Boolean CodePromo = false; //CodePromo
 	private String Statut = ""; //Statut de la commande
-	private AdresseClient adresseClient; //identifiant adresse
+	private int adresseClient=0; //identifiant adresse
 	private float prix=0;
 	private Panier panier = new Panier(); //Liste des produit commandÃ©
 
 
-	public Commande(int idCommande,int noClient,String date,String livraison,Boolean CodePromo,String Statut,AdresseClient adresseClient) {
+	public Commande(int idCommande,int noClient,String date,String livraison,Boolean CodePromo,String Statut,int adresseClient) {
 		this.idCommande=idCommande;
 		this.noClient = noClient;
 		this.date = date;
@@ -25,7 +25,7 @@ public class Commande {
 		setPrix();
 		
 	}
-	public Commande(int idCommande,int noClient,String date,String livraison,Boolean CodePromo,String Statut,AdresseClient adresseClient, Panier panier) {
+	public Commande(int idCommande,int noClient,String date,String livraison,Boolean CodePromo,String Statut,int adresseClient, Panier panier) {
 		this.idCommande=idCommande;
 		this.noClient = noClient;
 		this.date = date;
@@ -80,11 +80,11 @@ public class Commande {
 		this.CodePromo=CodePromo;
 	}
 	
-	public AdresseClient getIdAdresse() {
+	public int getIdAdresse() {
 		return adresseClient;
 	}
 
-	public void setAdresse(AdresseClient adresseClient) {
+	public void setAdresse(int adresseClient) {
 
 		this.adresseClient = adresseClient;
 	}
@@ -112,12 +112,16 @@ public class Commande {
 	public Panier getPanier(){
 		return this.panier;
 	}
+	public void setPanier(Panier panier) {
+		this.panier=panier;
+		setPrix();
+	}
 
-	public void setCodePromo(AdresseClient adresseClient) {
-		this.adresseClient=adresseClient;
+	public void setCodePromo(boolean CodePromo) {
+		this.CodePromo=CodePromo;
 	}
 	public void afficher() {
-		System.out.println("Commande effectuée le " + this.date + "\n Statut : " + this.Statut + " \n Livraison à : " + this.adresseClient.AfficherAdrr() + " \n Total de la commande : " + this.prix + "€");
+		System.out.println("Commande effectuée le " + this.date + "\n Statut : " + this.Statut + " \n Livraison à : " + this.adresseClient + " \n Total de la commande : " + this.prix + "€");
 		if (this.CodePromo) {
 			System.out.println("Promotion Utilisée pour la commande");
 		}
