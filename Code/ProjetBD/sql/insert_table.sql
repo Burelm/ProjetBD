@@ -49,14 +49,14 @@ INSERT INTO CodePromo VALUES (2,1);
 
 
 
-INSERT INTO Produit VALUES (1,'Tirage','Moyenne',25.50,'Un tirage classique');
-INSERT INTO Produit VALUES (2,'Cadre','Haute',40.22,'Un beau cadre');
-INSERT INTO Produit VALUES (3,'Calendrier','Bonne',35.50,'Petit calendrier des familles');
-INSERT INTO Produit VALUES (4,'Album','Haute',101.0,'Album pour tout le monde');
-INSERT INTO Produit VALUES (5,'Impression','Moyenne',15.50,'Une impression cordiale');
+INSERT INTO Produit VALUES (1,'Tirage','Moyenne',25.50,'Tirage photo qualite moyenne');
+INSERT INTO Produit VALUES (2,'Cadre','Haute',40.22,'Cadre de hate qualite');
+INSERT INTO Produit VALUES (3,'Calendrier','Bonne',35.50,'Calendrier de bonne qualite');
+INSERT INTO Produit VALUES (4,'Album','Haute',101.0,'Album de haute qualite');
+INSERT INTO Produit VALUES (5,'Impression','Moyenne',15.50,'Impression de qualite moyenne');
 
 
-INSERT INTO Tirage VALUES (1,1,1,1,'Portrait');
+INSERT INTO Tirage VALUES (1,1,1,1,'Portrait');	
 
 INSERT INTO Tirage VALUES (2,2,2,2,'Paysage');
 
